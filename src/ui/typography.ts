@@ -62,7 +62,7 @@ const B1 = css`
 	line-height: 20px;
 `;
 
-export const typographyDesktop = {
+export const typography = {
 	H1,
 	H2,
 	H3,
