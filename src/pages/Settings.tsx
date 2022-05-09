@@ -1,7 +1,8 @@
+import SettingsForm from "../components/SettingsForm/SettingsForm"
+
 const Settings = ()=> {
 	return (
-        <a>settings</a>
-		
+        <SettingsForm/>
 	);
 }
 
