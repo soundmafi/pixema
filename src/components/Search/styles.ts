@@ -7,6 +7,8 @@ export const StyledSearch = styled.input`
 		border-radius: 10px;
 		padding: 16px 20px;
 		${typography.S1}
+		background-color: ${Colors.bgGraphite};
+		color: ${Colors.secondary};
 
 	&::placeholder {
 		color: ${Colors.secondary};
