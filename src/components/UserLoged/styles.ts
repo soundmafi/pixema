@@ -6,6 +6,7 @@ export const StyledUserLogged = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	cursor: pointer;
 `;
 export const StyledBadge = styled.div`
 	width: 56px;
