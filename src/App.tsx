@@ -23,11 +23,11 @@ const App = () => {
 					<Route path={routes.TRENDS} element={<Trends />} />
 					<Route path={routes.FAVORITES} element={<Favorites />} />
 					<Route path={routes.SETTINGS} element={<Settings />} />
-					<Route path={routes.SIGN_IN} element={<Login />} />
-					<Route path={routes.SIGN_UP} element={<Register />} />
-					<Route path={routes.RESET_PASSWORD} element={<Reset />} />
-					<Route path={routes.NOT_FOUND} element={<NotFound />} />
 				</Route>
+				<Route path={routes.SIGN_IN} element={<Login />} />
+				<Route path={routes.SIGN_UP} element={<Register />} />
+				<Route path={routes.RESET_PASSWORD} element={<Reset />} />
+				<Route path={routes.NOT_FOUND} element={<NotFound />} />
 			</Routes>
 		</StyledApp>
 	);
