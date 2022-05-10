@@ -8,7 +8,6 @@ export const StyledForm = styled.form`
 `;
 
 export const StyledTitle = styled.h2`
-	color: ${Colors.ctxWhite};
 	${typography.H2}
 	margin-bottom: 16px;
 `;

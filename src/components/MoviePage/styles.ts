@@ -36,6 +36,7 @@ export const StyledBadge = styled.p`
 	${typography.S3}
 	background-color: ${Colors.bgGraphite};
 	border-radius: 6px;
+    color: var(--txtColor);
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`

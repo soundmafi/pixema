@@ -22,7 +22,6 @@ export const StyledBadge = styled.div`
 
 export const StyledUsername = styled.p`
 	${typography.S3}
-	color: ${Colors.ctxWhite};
 `;
 
 export const StyledOpenIcon = styled.div``;
