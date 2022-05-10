@@ -1,11 +1,12 @@
 import Nav from '../Nav/Nav';
-import { StyledAside, StyledRights } from './styles';
+import Rights from '../Rights/Rights';
+import { StyledAside} from './styles';
 
 const Aside = () => {
 	return (
 		<StyledAside>
 			<Nav />
-			<StyledRights>© All Rights Reserved</StyledRights>
+			<Rights/>
 		</StyledAside>
 	);
 };
