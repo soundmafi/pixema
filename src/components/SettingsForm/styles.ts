@@ -49,3 +49,13 @@ export const StyledButtonsContainer = styled.div`
 	grid-template-columns: 1fr 1fr;
 	column-gap: 40px;
 `;
+
+export const StyledThemeName = styled.h3`
+	${typography.S2}
+	color: ${Colors.ctxWhite};
+`;
+
+export const StyledText = styled.p`
+${typography.S3}
+	color: ${Colors.ctxLigth}
+`;

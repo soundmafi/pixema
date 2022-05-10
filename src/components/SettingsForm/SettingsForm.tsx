@@ -1,4 +1,6 @@
-import InputSetting from '../InputSetting/InputSetting';
+import { ISwitch } from '../../types/types';
+import Input from '../Input/Input';
+import Switch from '../Switcher/Switcher';
 import {
 	StyledBlockContainer,
 	StyledButtonCancel,
@@ -7,23 +9,25 @@ import {
 	StyledContainer,
 	StyledForm,
 	StyledPasswordContainer,
+	StyledText,
+	StyledThemeName,
 	StyledTitle,
 } from './styles';
 
-const Settings = () => {
+const Settings = ({toggleTheme}:ISwitch) => {
 	return (
 		<StyledForm>
 			<StyledBlockContainer>
 				<StyledTitle>Profile</StyledTitle>
 
 				<StyledContainer>
-					<InputSetting
+					<Input
 						inputName="Name"
 						inputType="text"
 						value="Artem Lapitsky"
 						placeholder="Your Name"
 					/>
-					<InputSetting
+					<Input
 						inputName="Email"
 						inputType="mail"
 						value="a.lapitsky@gmail.com"
@@ -36,18 +40,18 @@ const Settings = () => {
 				<StyledTitle>Password</StyledTitle>
 
 				<StyledContainer>
-					<InputSetting
+					<Input
 						inputName="Password"
 						inputType="password"
 						placeholder="Your password"
 					/>
 					<StyledPasswordContainer>
-						<InputSetting
+						<Input
 							inputName="New password"
 							inputType="password"
 							placeholder="New password"
 						/>
-						<InputSetting
+						<Input
 							inputName="Confirm password"
 							inputType="password"
 							placeholder="Confirm password"
@@ -60,19 +64,20 @@ const Settings = () => {
 				<StyledTitle>Color Mode</StyledTitle>
 
 				<StyledContainer>
-					<InputSetting inputName="Dark Theme" inputType="checkbox" />
-					<InputSetting inputName="White Theme" inputType="checkbox" />
+					<div>
+						<StyledThemeName>Dark</StyledThemeName>
+						<StyledText>Use dark thema</StyledText>
+					</div>
+
+					<Switch toggleTheme={toggleTheme}/>
 				</StyledContainer>
 			</StyledBlockContainer>
 
 			<StyledBlockContainer>
-
-                <StyledButtonsContainer>
-                <StyledButtonCancel>Cancel</StyledButtonCancel>
-                <StyledButtonSave>Save</StyledButtonSave>
-                </StyledButtonsContainer>
-
-
+				<StyledButtonsContainer>
+					<StyledButtonCancel>Cancel</StyledButtonCancel>
+					<StyledButtonSave>Save</StyledButtonSave>
+				</StyledButtonsContainer>
 			</StyledBlockContainer>
 		</StyledForm>
 	);

@@ -6,8 +6,16 @@ import Settings from './pages/Settings';
 import Trends from './pages/Trends';
 import MainTemplate from './components/MainTemplate/MainTemplate';
 import { StyledApp } from './Appstyles';
+import { useState } from 'react';
 
 const App = () => {
+	const [theme, setTheme] = useState('darkTheme');
+	document.documentElement.setAttribute('theme', theme);
+
+	const toggleTheme = (isTrue: boolean) => {
+		isTrue ? setTheme('lightTheme') : setTheme('darkTheme');
+	};
+
 	return (
 		<StyledApp>
 			<Routes>
@@ -15,7 +23,10 @@ const App = () => {
 					<Route index element={<Home />} />
 					<Route path={routes.TRENDS} element={<Trends />} />
 					<Route path={routes.FAVORITES} element={<Favorites />} />
-					<Route path={routes.SETTINGS} element={<Settings />} />
+					<Route
+						path={routes.SETTINGS}
+						element={<Settings toggleTheme={toggleTheme} />}
+					/>
 				</Route>
 			</Routes>
 		</StyledApp>
