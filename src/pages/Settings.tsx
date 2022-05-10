@@ -1,9 +1,8 @@
 import SettingsForm from "../components/SettingsForm/SettingsForm"
-import { ISwitch } from "../types/types";
 
-const Settings = ({toggleTheme}:ISwitch)=> {
+const Settings = ()=> {
 	return (
-        <SettingsForm toggleTheme= {toggleTheme}/>
+        <SettingsForm />
 	);
 }
 

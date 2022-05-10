@@ -14,7 +14,7 @@ import {
 	StyledTitle,
 } from './styles';
 
-const Settings = ({toggleTheme}:ISwitch) => {
+const Settings = () => {
 	return (
 		<StyledForm>
 			<StyledBlockContainer>
@@ -69,7 +69,7 @@ const Settings = ({toggleTheme}:ISwitch) => {
 						<StyledText>Use dark thema</StyledText>
 					</div>
 
-					<Switch toggleTheme={toggleTheme}/>
+					<Switch />
 				</StyledContainer>
 			</StyledBlockContainer>
 
