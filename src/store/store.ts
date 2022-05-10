@@ -7,3 +7,5 @@ const store = configureStore({
 	},
 });
 export default store;
+
+export type RootStore = ReturnType<typeof store.getState>;
