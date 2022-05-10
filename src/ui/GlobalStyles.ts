@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { Colors } from './colors';
+import { darkTheme } from './themes';
+import { lightTheme } from './themes';
 
 export const GlobalStyles = createGlobalStyle`
 * {
@@ -20,8 +21,18 @@ button {
 	outline: none;
 	cursor: pointer;	
 }
+
+html[theme='darkTheme']{
+	${darkTheme}
+	}
+
+html[theme='lightTheme']{
+	${lightTheme}
+}
+
 body {
 	font-family: 'Exo 2', sans-serif;
-	background: ${Colors.bgBlack};
+	background-color: var(--bgColor);
+	color: var(--txtColor);
 }
 `;
