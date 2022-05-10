@@ -1,3 +1,6 @@
+import { FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { routes } from '../../routes/routes';
 import Input from '../Input/Input';
 import {
 	StyledButton,
@@ -9,15 +12,20 @@ import {
 } from './styles';
 
 const SignIn = () => {
+	const navigate = useNavigate()
+	const onSubmit =(e: FormEvent<HTMLFormElement>) =>{
+		e.preventDefault();
+		navigate(routes.HOME);
+	}
 	return (
-		<StyledSignForm>
+		<StyledSignForm onSubmit={onSubmit}>
 			<StyledTitle>Sign In</StyledTitle>
 			<Input inputName="Email" inputType="email" placeholder="Your email" />
 			<Input inputName="Password" inputType="password" placeholder="Your pasword" />
-			<StyledRestorePasword>Forgot password?</StyledRestorePasword>
+			<StyledRestorePasword><Link to={routes.RESET_PASSWORD}>Forgot password?</Link></StyledRestorePasword>
 			<StyledButton>Sign in</StyledButton>
 			<StyledText>
-				Don’t have an account? <StyledTextSignUp>Sign Up</StyledTextSignUp>
+				Don’t have an account? <Link to={routes.SIGN_UP}><StyledTextSignUp>Sign Up</StyledTextSignUp></Link>
 			</StyledText>
 		</StyledSignForm>
 	);

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { routes } from '../../routes/routes';
 import Input from '../Input/Input';
 import {
 	StyledButton,
@@ -21,7 +23,7 @@ const SignUp = () => {
 			/>
 			<StyledButton>Sign up</StyledButton>
 			<StyledText>
-				Already have an account? <StyledTextSignUp>Sign In</StyledTextSignUp>
+				Already have an account? <Link to={routes.SIGN_IN}><StyledTextSignUp>Sign In</StyledTextSignUp></Link>
 			</StyledText>
 		</StyledSignUpForm>
 	);
