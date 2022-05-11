@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
-import Input from '../Input/Input';
 import {
 	StyledButton,
 	StyledSignUpForm,
@@ -8,22 +9,67 @@ import {
 	StyledTextSignUp,
 	StyledTitle,
 } from './styles';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { setUser } from '../../store/slices/userReducer';
+import { IInputData } from '../../types/types';
+import Input from '../Input/Input';
 
 const SignUp = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { register, handleSubmit } = useForm<IInputData>();
+
+	const onSubmit: SubmitHandler<IInputData> = (data) => {
+		const auth = getAuth();
+		createUserWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				dispatch(setUser(userCredential.user.email));
+				navigate(routes.SIGN_IN);
+			})
+			.catch(console.error);
+	};
+
 	return (
-		<StyledSignUpForm>
+		<StyledSignUpForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledTitle>Sign Up</StyledTitle>
-			<Input inputName="Name" inputType="text" placeholder="Your Name" />
-			<Input inputName="Email" inputType="email" placeholder="Your email" />
-			<Input inputName="Password" inputType="password" placeholder="Your pasword" />
 			<Input
+				keyData="name"
+				inputName="Name"
+				inputType="text"
+				placeholder="Your Name"
+				register={register}
+				required
+			/>
+			<Input
+				keyData="email"
+				inputName="Email"
+				inputType="email"
+				placeholder="Your email"
+				register={register}
+				required
+			/>
+			<Input
+				keyData="password"
+				inputName="Password"
+				inputType="password"
+				placeholder="Your pasword"
+				register={register}
+				required
+			/>
+			<Input
+				keyData="password_confirm"
 				inputName="Confirm password"
 				inputType="password"
 				placeholder="Confirm password"
+				register={register}
+				required
 			/>
 			<StyledButton>Sign up</StyledButton>
 			<StyledText>
-				Already have an account? <Link to={routes.SIGN_IN}><StyledTextSignUp>Sign In</StyledTextSignUp></Link>
+				Already have an account?{' '}
+				<Link to={routes.SIGN_IN}>
+					<StyledTextSignUp>Sign In</StyledTextSignUp>
+				</Link>
 			</StyledText>
 		</StyledSignUpForm>
 	);
