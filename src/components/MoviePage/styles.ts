@@ -34,13 +34,13 @@ export const StyledBadge = styled.p`
 	display: block;
 	padding: 2px 8px;
 	${typography.S3}
-	background-color: ${Colors.bgGraphite};
+	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 6px;
     color: var(--txtColor);
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`
-	background-color: ${Colors.green};
+	background-color: ${Colors.GREEN};
 `;
 
 export const StyledBadgeContainer = styled.div`
@@ -64,7 +64,7 @@ export const StyledInfoContainer = styled.div`
 `;
 
 export const StyledAttribute = styled.p`
-	${Colors.ctxLigth}
+	${Colors.CTX_LIGHT}
 `;
 export const StyledValue = styled.p``;
 
@@ -75,11 +75,11 @@ export const StyledButtonsContainer = styled.div`
 `;
 export const StyledButtonFavorite = styled.button`
 	padding: 12px;
-	background-color: ${Colors.bgGraphite};
+	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 10px 0 0 10px;
 `;
 export const StyledButtonShare = styled.button`
 	padding: 12px;
-	background-color: ${Colors.bgGraphite};
+	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 0 10px 10px 0;
 `;

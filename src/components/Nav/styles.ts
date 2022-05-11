@@ -7,6 +7,6 @@ export const StyledNav = styled.nav`
 
 	a {
 		text-decoration: none;
-		color: ${Colors.secondary};
+		color: ${Colors.SECONDARY};
 	}
 `;

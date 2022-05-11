@@ -9,19 +9,19 @@ export const StyledResetForm = styled.form`
 	width: 100%;
 	padding: 40px;
 	margin: 0 auto;
-	background-color: ${Colors.bgDark};
+	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
 `;
 
 export const StyledTitle = styled.h2`
 	${typography.H3}
 	margin-bottom: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledButton = styled.button`
 	padding: 16px;
-	background-color: ${Colors.primary};
+	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;

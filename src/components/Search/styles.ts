@@ -7,11 +7,11 @@ export const StyledSearch = styled.input`
 		border-radius: 10px;
 		padding: 16px 20px;
 		${typography.S1}
-		background-color: ${Colors.bgGraphite};
-		color: ${Colors.secondary};
+		background-color: ${Colors.BG_GRAPHITE};
+		color: ${Colors.SECONDARY};
 
 	&::placeholder {
-		color: ${Colors.secondary};
+		color: ${Colors.SECONDARY};
 	}
 `;
 

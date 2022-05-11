@@ -22,7 +22,7 @@ export const StyledSlider = styled.span<{ state: boolean }>`
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: ${Colors.primary};
+	background-color: ${Colors.PRIMARY};
 	border-radius: 18px;
 
 	&::before {

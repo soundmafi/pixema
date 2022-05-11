@@ -11,9 +11,9 @@ export const StyledUserLogged = styled.div`
 export const StyledBadge = styled.div`
 	width: 56px;
 	height: 56px;
-	background-color: ${Colors.primary};
+	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 	${typography.H3}
 	display: flex;
 	justify-content: center;

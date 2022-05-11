@@ -9,38 +9,38 @@ export const StyledSignUpForm = styled.form`
 	width: 100%;
 	padding: 40px;
 	margin: 0 auto;
-	background-color: ${Colors.bgDark};
+	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
 `;
 
 export const StyledTitle = styled.h2`
 	${typography.H2}
 	margin-bottom: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledRestorePasword = styled.a`
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 24px;
-	color: ${Colors.secondary};
+	color: ${Colors.SECONDARY};
 	cursor: pointer;
 	margin-top: -20px;
 `;
 
 export const StyledButton = styled.button`
 	padding: 16px;
-	background-color: ${Colors.primary};
+	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 export const StyledText = styled.p`
 	margin: 0 auto;
 	${typography.S3};
-	color: ${Colors.secondary};
+	color: ${Colors.SECONDARY};
 `;
 
 export const StyledTextSignUp = styled(StyledRestorePasword)`
-	color: ${Colors.primary};
+	color: ${Colors.PRIMARY};
 	${typography.S3};
 `;

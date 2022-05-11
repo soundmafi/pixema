@@ -13,7 +13,7 @@ export const StyledTitle = styled.h2`
 `;
 
 export const StyledContainer = styled.div`
-	background-color: ${Colors.bgDark};
+	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
 	padding: 40px;
 	display: grid;
@@ -30,16 +30,16 @@ export const StyledPasswordContainer = styled.div`
 
 export const StyledButtonCancel = styled.button`
 	padding: 12px;
-	background-color: ${Colors.bgDark};
+	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledButtonSave = styled(StyledButtonCancel)`
 	padding: 12px;
-	background-color: ${Colors.primary};
+	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledButtonsContainer = styled.div`
@@ -52,10 +52,10 @@ export const StyledButtonsContainer = styled.div`
 
 export const StyledThemeName = styled.h3`
 	${typography.S2}
-	color: ${Colors.ctxWhite};
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledText = styled.p`
 ${typography.S3}
-	color: ${Colors.ctxLigth}
+	color: ${Colors.CTX_LIGHT}
 `;
