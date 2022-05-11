@@ -1,3 +1,5 @@
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import {
 	StyledButton,
@@ -6,10 +8,16 @@ import {
 } from './styles';
 
 const ResetPassword = () => {
+	const { register, handleSubmit } = useForm<IInputData>();
+
+	const onSubmit: SubmitHandler<IInputData> = (data) => {
+		console.log(data.email);
+	};
 	return (
-		<StyledResetForm>
+		<StyledResetForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledTitle>Reset Password</StyledTitle>
-			<Input inputName="Email" inputType="email" placeholder="Your email" />	
+			<Input inputName="Email" inputType="email" placeholder="Your email" keyData="email" register={register}
+				required/>	
 			<StyledButton>Reset</StyledButton>
 		</StyledResetForm>
 	);
