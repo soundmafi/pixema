@@ -6,12 +6,12 @@ const H1 = css`
 	font-weight: 600;
 	line-height: 60px;
 
-	${media.tablet} {
+	${media.TABLET} {
 		font-size: 32px;
 		line-height: 48px;
 	}
 
-	${media.mobile} {
+	${media.MOBILE} {
 		font-size: 28px;
 		line-height: 42px;
 	}
@@ -22,7 +22,7 @@ const H2 = css`
 	font-weight: 600;
 	line-height: 36px;
 
-	${media.mobile} {
+	${media.MOBILE} {
 		font-size: 20px;
 	}
 `;
@@ -32,7 +32,7 @@ const H3 = css`
 	font-weight: 600;
 	line-height: 32px;
 
-	${media.mobile} {
+	${media.MOBILE} {
 		font-size: 18px;
 		line-height: 28px;
 	}
