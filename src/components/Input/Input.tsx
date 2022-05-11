@@ -1,16 +1,31 @@
+import { Path, UseFormRegister } from 'react-hook-form';
+import { IInputData } from '../../types/types';
 import { StyledInput, StyledInputItem, StyledLabel } from './styles';
-interface IInput {
-	inputName: string;
+
+type InputProps = {
+	keyData: Path<IInputData>
+	inputName:string
 	inputType: string;
 	value?: string;
 	placeholder?: string;
-}
+	register: UseFormRegister<IInputData>;
+	required: boolean;
+};
 
-const InputSetting = ({ inputName, inputType, placeholder, value }: IInput) => {
+const InputSetting = ({keyData, inputName, 
+	inputType,
+	placeholder,
+	register,
+	required,
+}: InputProps) => {
 	return (
 		<StyledInputItem>
 			<StyledLabel htmlFor={inputName}>{inputName}</StyledLabel>
-			<StyledInput name={inputName} type={inputType} placeholder={placeholder} />
+			<StyledInput 
+				type={inputType}
+				placeholder={placeholder}
+				{...register(keyData, { required })}
+			/>
 		</StyledInputItem>
 	);
 };
