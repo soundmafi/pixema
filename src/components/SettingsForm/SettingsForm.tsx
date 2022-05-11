@@ -1,4 +1,5 @@
-import { ISwitch } from '../../types/types';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import Switch from '../Switcher/Switcher';
 import {
@@ -15,8 +16,14 @@ import {
 } from './styles';
 
 const Settings = () => {
+	const { register, handleSubmit } = useForm<IInputData>();
+
+	const onSubmit: SubmitHandler<IInputData> = (data) => {
+		console.log(data);
+	};
+
 	return (
-		<StyledForm>
+		<StyledForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledBlockContainer>
 				<StyledTitle>Profile</StyledTitle>
 
@@ -24,14 +31,18 @@ const Settings = () => {
 					<Input
 						inputName="Name"
 						inputType="text"
-						value="Artem Lapitsky"
 						placeholder="Your Name"
+						keyData="name"
+						register={register}
+						required
 					/>
 					<Input
 						inputName="Email"
 						inputType="mail"
-						value="a.lapitsky@gmail.com"
 						placeholder="Your email"
+						keyData="email"
+						register={register}
+						required
 					/>
 				</StyledContainer>
 			</StyledBlockContainer>
@@ -44,17 +55,26 @@ const Settings = () => {
 						inputName="Password"
 						inputType="password"
 						placeholder="Your password"
+						keyData="password"
+						register={register}
+						required
 					/>
 					<StyledPasswordContainer>
 						<Input
 							inputName="New password"
 							inputType="password"
 							placeholder="New password"
+							keyData="password_new"
+							register={register}
+							required
 						/>
 						<Input
 							inputName="Confirm password"
 							inputType="password"
 							placeholder="Confirm password"
+							keyData="password_confirm"
+							register={register}
+							required
 						/>
 					</StyledPasswordContainer>
 				</StyledContainer>

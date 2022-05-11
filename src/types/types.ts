@@ -3,8 +3,9 @@ export interface ISwitch {
 }
 
 export interface IInputData {
-	'email': string;
-	'password': string;
-	'name': string;
-	'password_confirm': string
+	email: string;
+	password: string;
+	name: string;
+	password_confirm: string
+	password_new:string
 }
