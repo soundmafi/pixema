@@ -4,6 +4,7 @@ import App from './App';
 import { GlobalStyles } from './ui/GlobalStyles';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import './firebase';
 
 const container = document.getElementById('root');
 if (!container) {
