@@ -1,7 +1,7 @@
-import { FormEvent } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
-import Input from '../Input/Input';
+
 import {
 	StyledButton,
 	StyledRestorePasword,
@@ -11,21 +11,54 @@ import {
 	StyledTitle,
 } from './styles';
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { IInputData } from '../../types/types';
+import Input from '../Input/Input';
+
 const SignIn = () => {
-	const navigate = useNavigate()
-	const onSubmit =(e: FormEvent<HTMLFormElement>) =>{
-		e.preventDefault();
-		navigate(routes.HOME);
-	}
+	const navigate = useNavigate();
+	const { register, handleSubmit } = useForm<IInputData>();
+
+	const onSubmit: SubmitHandler<IInputData> = (data) => {
+		console.log(data);
+
+		const auth = getAuth();
+		signInWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				navigate(routes.HOME);
+			})
+			.catch((error) => {
+				console.log('Не правильный логин или пароль');
+			});
+	};
 	return (
-		<StyledSignForm onSubmit={onSubmit}>
+		<StyledSignForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledTitle>Sign In</StyledTitle>
-			<Input inputName="Email" inputType="email" placeholder="Your email" />
-			<Input inputName="Password" inputType="password" placeholder="Your pasword" />
-			<StyledRestorePasword><Link to={routes.RESET_PASSWORD}>Forgot password?</Link></StyledRestorePasword>
+			<Input
+				keyData="email"
+				inputName="Email"
+				inputType="email"
+				placeholder="Your email"
+				register={register}
+				required
+			/>
+			<Input
+				keyData="password"
+				inputName="Password"
+				inputType="password"
+				placeholder="Your pasword"
+				register={register}
+				required
+			/>
+			<StyledRestorePasword>
+				<Link to={routes.RESET_PASSWORD}>Forgot password?</Link>
+			</StyledRestorePasword>
 			<StyledButton>Sign in</StyledButton>
 			<StyledText>
-				Don’t have an account? <Link to={routes.SIGN_UP}><StyledTextSignUp>Sign Up</StyledTextSignUp></Link>
+				Don’t have an account?{' '}
+				<Link to={routes.SIGN_UP}>
+					<StyledTextSignUp>Sign Up</StyledTextSignUp>
+				</Link>
 			</StyledText>
 		</StyledSignForm>
 	);
