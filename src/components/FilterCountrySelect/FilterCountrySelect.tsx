@@ -21,6 +21,7 @@ const CustomSelect = ({ handleSelect, value, name }: ISelect) => {
 			border: 'none',
 			backgroundColor: `${Colors.BG_GRAPHITE}`,
 			borderRadius: 10,
+			marginBottom: 50
 		}),
 
 		indicatorSeparator: (nativeStyles) => ({
