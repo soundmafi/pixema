@@ -1,31 +1,39 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
-import { IRequestParams } from '../../services/types';
+import { IMovies, IRequestParams } from '../../services/types';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
-import mov from './../../responseMovie.json';
-
 
 const List = () => {
-	const [movies, setMovies] = useState(mov);
-	const defaultRequestParams:IRequestParams = {
+	const initialMovies: IMovies = {
+		response: null,
+		results: [],
+		totalResults: 0,
+		currentPage: 1,
+		totalPages: 0,
+	};
+
+	const [movies, setMovies] = useState<IMovies>(initialMovies);
+
+	const defaultRequestParams: IRequestParams = {
 		title: 'love',
 		year: '',
 		type: 'movie',
-		page: 1
+		page: 3,
+	};
+	const [requestPrarms, setRequestParams] = useState<IRequestParams>(defaultRequestParams);
 
-	}
-	const [requestPrarms, setRequestParams] = useState<IRequestParams>(defaultRequestParams)
-
- useEffect(() => {
-		movieApi.getMoviesByParams(requestPrarms)
-	.then(movies => setMovies(movies));
-	 }, []);
+	useEffect(() => {
+		movieApi
+			.getMoviesByParams(requestPrarms)
+			.then((movies) => setMovies(transformMovies(movies)));
+	}, []);
 
 	return (
 		<StyledList>
-			{movies.Search.map(({ Title, Poster, imdbID }) => {
-				return <CardItemMovie key={imdbID} Title={Title} Poster={Poster} imdbID={imdbID} />;
+			{movies.results.map(({ title, poster, imdbID }) => {
+				return <CardItemMovie key={imdbID} title={title} Poster={poster} imdbID={imdbID} />;
 			})}
 		</StyledList>
 	);
