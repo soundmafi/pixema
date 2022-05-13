@@ -1,22 +1,31 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { movieApi } from '../../services/movieApi';
+import { IRequestParams } from '../../services/types';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
-import movies from './../../responseMovie.json';
+import mov from './../../responseMovie.json';
+
 
 const List = () => {
-	// const [movie, setMovie] = useState([]);
+	const [movies, setMovies] = useState(mov);
+	const defaultRequestParams:IRequestParams = {
+		title: 'love',
+		year: '',
+		type: 'movie',
+		page: 1
 
-	//  setMovie(movies.Search);
+	}
+	const [requestPrarms, setRequestParams] = useState<IRequestParams>(defaultRequestParams)
 
-	// useEffect(() => {
-	// 	fetch('http://www.omdbapi.com/?s=action&apikey=13e9bfdc&y=2022')
-	// 		.then((response) => response.json())
-	// 		.then((data) => setMovie(data));
-	// }, []);
+ useEffect(() => {
+		movieApi.getMoviesByParams(requestPrarms)
+	.then(movies => setMovies(movies));
+	 }, []);
+
 	return (
 		<StyledList>
-			{movies.Search.map(({Title, Poster,imdbID}) => {
-				return 	<CardItemMovie key={imdbID} Title={Title} Poster={Poster} imdbID={imdbID}/>
+			{movies.Search.map(({ Title, Poster, imdbID }) => {
+				return <CardItemMovie key={imdbID} Title={Title} Poster={Poster} imdbID={imdbID} />;
 			})}
 		</StyledList>
 	);
@@ -25,7 +34,6 @@ const List = () => {
 export default List;
 
 const StyledList = styled.ul`
-
 	grid-area: outlet;
 
 	display: flex;
@@ -38,8 +46,6 @@ const StyledList = styled.ul`
 	/* padding: 0;
 	margin: 0; */
 	list-style: none;
-	
+
 	/* max-width: 960px; */
 `;
-
-
