@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setStateFilterClose } from '../../store/slices/filterStateReducer';
+import { RootStore } from '../../store/store';
 import { IOption } from '../../types/types';
 import FilterCountrySelect from '../FilterCountrySelect/FilterCountrySelect';
 import { FilterInput } from '../FilterInput/FilterInput';
@@ -7,7 +10,6 @@ import {
 	StyledButtonClose,
 	StyledButtonsContainer,
 	StyledClearFilter,
-	StyledContainer,
 	StyledFilter,
 	StyledLine,
 	StyledShowResult,
@@ -16,6 +18,8 @@ import {
 } from './styles';
 
 const Filter = () => {
+	const dispatch = useDispatch();
+	const { isDisable } = useSelector(({ filterState }: RootStore) => filterState);
 	const [country, setCountry] = useState('Belarus');
 
 	const handleSelect = (option: IOption | null): void => {
@@ -25,9 +29,13 @@ const Filter = () => {
 	};
 	console.log(country);
 
+	const handleClose = () => {
+		dispatch(setStateFilterClose());
+	};
+
 	return (
-		<StyledFilter>
-			<StyledButtonClose>
+		<StyledFilter isDisable={isDisable}>
+			<StyledButtonClose onClick={handleClose}>
 				<svg
 					width="20"
 					height="20"
@@ -52,7 +60,7 @@ const Filter = () => {
 			<FilterInput inputName={'MovieName'} inputType={'text'} placeholder={'Your text'} />
 			<StyledTitleParameters>Genre</StyledTitleParameters>
 			<FilterInput inputName={'Genre'} inputType={'text'} placeholder={'Genre text'} />
-			<StyledTitleParameters>Year</StyledTitleParameters>
+			{/* <StyledTitleParameters>Year</StyledTitleParameters>
 			<StyledContainer>
 				<FilterInput inputName={'YearFrom'} inputType={'text'} placeholder={'From'} />
 				<FilterInput inputName={'YearTo'} inputType={'text'} placeholder={'To'} />
@@ -61,7 +69,7 @@ const Filter = () => {
 			<StyledContainer>
 				<FilterInput inputName={'RatingFrom'} inputType={'text'} placeholder={'From'} />
 				<FilterInput inputName={'RatingTo'} inputType={'text'} placeholder={'To'} />
-			</StyledContainer>
+			</StyledContainer> */}
 
 			<StyledTitleParameters>Country</StyledTitleParameters>
 			<FilterCountrySelect handleSelect={handleSelect} value={country} name="Country" />
