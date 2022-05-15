@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 
-export const StyledFilter = styled.div`
-	position: relative;
+export const StyledFilter = styled.div<{isDisable:boolean}>`
+	position: absolute;
+	top: 38px;
+	right: 10px;
 
-	display: grid;
+	display: ${({ isDisable }) => {
+		return isDisable ? `grid` : `none`;
+		}};
+
 	grid-template-columns: 1fr;
 
 	padding: 48px 40px;
 	/* max-width: 518px; */
 
 	border-radius: 10px;
+	border: 1px solid ${Colors.CTX_WHITE};
 	background-color: ${Colors.BG_DARK};
+
+	box-shadow: 0px 7px 11px 3px rgba(255, 255, 255, 0.48);
 `;
 export const StyledTitleFilter = styled.h2`
 	margin-bottom: 48px;
@@ -39,7 +47,7 @@ export const StyledContainer = styled.div`
 
 export const StyledButtonClose = styled.button`
 	position: absolute;
-	right: 50px;
+	right: 30px;
 	top: 25px;
 
 	width: 20px;
