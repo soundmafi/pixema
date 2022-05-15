@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filterStateReducer from './slices/filterStateReducer';
 import userReducer from './slices/userReducer';
+import themeReducer from './slices/themeReducer';
 
 const store = configureStore({
 	reducer: {
 		user: userReducer,
-		filterState: filterStateReducer ,
+		filterState: filterStateReducer,
+		theme: themeReducer,
 	},
 });
 export default store;
