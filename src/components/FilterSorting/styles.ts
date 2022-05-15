@@ -29,6 +29,7 @@ export const StyledLabel = styled.label<{ htmlFor: string; typeSort: string }>`
 
 	${typography.S1}
 	text-align: center;
+	color: ${Colors.CTX_WHITE};
 	
 	background-color: ${({ htmlFor, typeSort }) => {
 		return htmlFor === typeSort ? `${Colors.ORANGE}` : `${Colors.BG_DARK}`;

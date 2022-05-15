@@ -7,7 +7,7 @@ const store = configureStore({
 	reducer: {
 		user: userReducer,
 		filterState: filterStateReducer,
-		theme: themeReducer,
+		themeType: themeReducer,
 	},
 });
 export default store;

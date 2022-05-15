@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 
-export const StyledFilter = styled.div<{isDisable:boolean}>`
+export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	position: absolute;
 	top: 38px;
 	right: 10px;
 
 	display: ${({ isDisable }) => {
 		return isDisable ? `grid` : `none`;
-		}};
+	}};
 
 	grid-template-columns: 1fr;
 
@@ -23,10 +23,12 @@ export const StyledFilter = styled.div<{isDisable:boolean}>`
 `;
 export const StyledTitleFilter = styled.h2`
 	margin-bottom: 48px;
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledTitleParameters = styled.h3`
 	margin-bottom: 8px;
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledLine = styled.div`

@@ -15,7 +15,7 @@ export const StyledInputLabel = styled.label`
 	align-self: center;
 `;
 
-export const StyledSlider = styled.span<{ state: boolean }>`
+export const StyledSlider = styled.span<{ themeType: string }>`
 	position: absolute;
 	cursor: pointer;
 	top: 0;
@@ -35,8 +35,8 @@ export const StyledSlider = styled.span<{ state: boolean }>`
 		background-color: #ffffff;
 		border-radius: 50%;
 
-		transform: ${({ state }) => {
-			return state ? `translateX(0)`: `translateX(26px)`;
+		transform: ${({ themeType }) => {
+			return (themeType !== 'darkTheme') ? `translateX(0)`: `translateX(26px)`;
 		}};
 		transition: 0.3s;
 	}
