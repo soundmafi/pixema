@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+
 import styled from 'styled-components';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
@@ -16,14 +19,14 @@ const List = () => {
 
 	const [movies, setMovies] = useState<IMovies>(initialMovies);
 
-	const defaultRequestParams: IRequestParams = {
+	const initialRequestParams: IRequestParams = {
 		title: 'love',
 		year: '',
 		type: 'movie',
-		page: 3,
+		page: 2,
 	};
-	const [requestPrarms, setRequestParams] = useState<IRequestParams>(defaultRequestParams);
-
+	const [requestPrarms, setRequestParams] = useState<IRequestParams>(initialRequestParams);
+	
 	useEffect(() => {
 		movieApi
 			.getMoviesByParams(requestPrarms)
@@ -33,7 +36,11 @@ const List = () => {
 	return (
 		<StyledList>
 			{movies.results.map(({ title, poster, imdbID }) => {
-				return <CardItemMovie key={imdbID} title={title} Poster={poster} imdbID={imdbID} />;
+				return (
+					<Link to ={`/${imdbID}`}  key={imdbID}>
+						<CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />
+					</Link>
+				);
 			})}
 		</StyledList>
 	);
