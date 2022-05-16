@@ -1,16 +1,17 @@
+
 import MoviePoster from '../MoviePoster/MoviePoster';
 import { StyledCardItemMovie, StyledTitle } from './styles';
 
 interface IMovie {
 	title: string;
 	imdbID: string;
-	Poster: string;
+	poster: string;
 }
 
-const CardItemMovie = ({ Poster, title }: IMovie) => {
+const CardItemMovie = ({ poster, title, imdbID }: IMovie) => {
 	return (
-		<StyledCardItemMovie>
-			<MoviePoster Poster={Poster} />
+		<StyledCardItemMovie key={imdbID}>
+			<MoviePoster poster={poster} />
 			<StyledTitle>{title}</StyledTitle>
 		</StyledCardItemMovie>
 	);
