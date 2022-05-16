@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 interface IPoster{
-	Poster: string;
+	poster: string;
 }
 
-const MoviePoster = ({Poster}:IPoster) => {
+const MoviePoster = ({poster}:IPoster) => {
 	return (
-        <StyledPoster src={Poster} alt="coma"/>
+        <StyledPoster src={poster} alt="coma"/>
 	);
 };
 
