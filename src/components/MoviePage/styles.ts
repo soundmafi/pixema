@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Colors } from "../../ui/colors";
-import { typography } from "../../ui/typography";
+import styled from 'styled-components';
+import { Colors } from '../../ui/colors';
+import { typography } from '../../ui/typography';
 
 export const StyledMoviePage = styled.div`
 	display: grid;
@@ -36,7 +36,7 @@ export const StyledBadge = styled.p`
 	${typography.S3}
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 6px;
-    color: var(--txtColor);
+	color: var(--txtColor);
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`
@@ -82,4 +82,12 @@ export const StyledButtonShare = styled.button`
 	padding: 12px;
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 0 10px 10px 0;
+`;
+
+export const StyledButtonClose = styled.button`
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	right: 20%;
+	background-color: ${Colors.BG_DARK};
 `;
