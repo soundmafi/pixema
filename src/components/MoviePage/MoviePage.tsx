@@ -1,12 +1,19 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { transformMovieDetails } from '../../services/mappers/movieDetails';
+import { movieApi } from '../../services/movieApi';
+import { IMovieDetails } from '../../services/types';
+import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import Recommendations from '../Recommendations/Recommendations';
-import moviePage from './../../responseMoviePage.json';
+
 import {
 	ModifiedStyledBadge,
 	StyledAsideMovie,
 	StyledAttribute,
 	StyledBadge,
 	StyledBadgeContainer,
+	StyledButtonClose,
 	StyledButtonFavorite,
 	StyledButtonsContainer,
 	StyledButtonShare,
@@ -20,10 +27,46 @@ import {
 } from './styles';
 
 const MoviePage = () => {
+	const initialMovieDetail: IMovieDetails = {
+		title: '',
+		year: '',
+		released: '',
+		runtime: '',
+		genre: '',
+		director: '',
+		writer: '',
+		actors: '',
+		plot: '',
+		country: '',
+		poster: '',
+		ratings: [],
+		imdbRating: '',
+		imdbID: '',
+		boxOffice: '',
+		production: '',
+		response: true,
+	};
+
+	const [movieID, setMovieID] = useState<IMovieDetails>(initialMovieDetail);
+	const { id } = useParams();
+	const navigate = useNavigate();
+
+	const handleBack = () => {
+		navigate(-1);
+	};
+
+	useEffect(() => {
+		movieApi.getMovieDetails(id).then((movie) => setMovieID(transformMovieDetails(movie)));
+	}, [id]);
+
 	return (
 		<StyledMoviePage>
+			<StyledButtonClose onClick={handleBack}>
+				<ButtonCloseIcon />
+			</StyledButtonClose>
+
 			<StyledAsideMovie>
-				<MoviePoster Poster={moviePage.Poster} />
+				<MoviePoster poster={movieID.poster} />
 				<StyledButtonsContainer>
 					<StyledButtonFavorite>
 						<svg
@@ -79,10 +122,10 @@ const MoviePage = () => {
 				</StyledButtonsContainer>
 			</StyledAsideMovie>
 			<StyledMovieMain>
-				<StyledGenre>{moviePage.Genre}</StyledGenre>
-				<StyledTitle>{moviePage.Title}</StyledTitle>
+				<StyledGenre>{movieID.genre}</StyledGenre>
+				<StyledTitle>{movieID.title}</StyledTitle>
 				<StyledBadgeContainer>
-					<ModifiedStyledBadge>{moviePage.imdbRating}</ModifiedStyledBadge>
+					<ModifiedStyledBadge>{movieID.imdbRating}</ModifiedStyledBadge>
 					<StyledBadge>
 						<svg
 							width="32"
@@ -96,44 +139,32 @@ const MoviePage = () => {
 								fill="white"
 							/>
 						</svg>{' '}
-						{moviePage.imdbRating}
+						{movieID.imdbRating}
 					</StyledBadge>
-					<StyledBadge>{moviePage.Runtime}</StyledBadge>
+					<StyledBadge>{movieID.runtime}</StyledBadge>
 				</StyledBadgeContainer>
 
-				<StyledPlot>{moviePage.Plot}</StyledPlot>
+				<StyledPlot>{movieID.plot}</StyledPlot>
 
 				<StyledInfoContainer>
 					<StyledAttribute>Year</StyledAttribute>
-					<StyledValue>{moviePage.Year}</StyledValue>
+					<StyledValue>{movieID.year}</StyledValue>
 					<StyledAttribute>Released</StyledAttribute>
-					<StyledValue>{moviePage.Released}</StyledValue>
+					<StyledValue>{movieID.released}</StyledValue>
 					<StyledAttribute>BoxOffice</StyledAttribute>
-					<StyledValue>{moviePage.BoxOffice}</StyledValue>
+					<StyledValue>{movieID.boxOffice}</StyledValue>
 					<StyledAttribute>Country</StyledAttribute>
-					<StyledValue>{moviePage.Country}</StyledValue>
+					<StyledValue>{movieID.country}</StyledValue>
 					<StyledAttribute>Production</StyledAttribute>
-					<StyledValue>{moviePage.Production}</StyledValue>
+					<StyledValue>{movieID.production}</StyledValue>
 					<StyledAttribute>Actors</StyledAttribute>
-					<StyledValue>{moviePage.Actors}</StyledValue>
+					<StyledValue>{movieID.actors}</StyledValue>
 					<StyledAttribute>Director</StyledAttribute>
-					<StyledValue>{moviePage.Director}</StyledValue>
+					<StyledValue>{movieID.director}</StyledValue>
 					<StyledAttribute>Writer</StyledAttribute>
-					<StyledValue>{moviePage.Writer}</StyledValue>
+					<StyledValue>{movieID.writer}</StyledValue>
 				</StyledInfoContainer>
-
-				{/* <p>{moviePage.imdbID}</p>
-				<p>{moviePage.Type}</p>
-				<p>{moviePage.Awards}</p>				
-				<p>{moviePage.DVD}</p>
-				<p>{moviePage.Language}</p>
-				<p>{moviePage.Metascore}</p>
-				<p>{moviePage.Rated}</p>
-				<p>{moviePage.Response}</p>				
-				<p>{moviePage.Website}</p>
-				<p>{moviePage.imdbVotes}</p> */}
 			</StyledMovieMain>
-
 			<Recommendations />
 		</StyledMoviePage>
 	);
