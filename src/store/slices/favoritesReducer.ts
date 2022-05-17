@@ -1,19 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IMovie } from '../../services/types';
 
-interface IFavorites{
-	favorites: IMovie[]
+interface IFavorites {
+	favorites: IMovie[];
 }
 
 const initialState: IFavorites = {
 	favorites: [
 		{
-		title: '',
-		imdbID: '',
-		poster: '',
-		type: '',
-		year: ''},
-]
+			title: '',
+			imdbID: '',
+			poster: '',
+			type: '',
+			year: '',
+		},
+	],
 };
 
 const favoritesSlice = createSlice({
@@ -23,8 +24,14 @@ const favoritesSlice = createSlice({
 		setFavorite: (state, movie) => {
 			state.favorites.push(movie.payload);
 		},
+
+		unsetFavorite: (state, imdbID) => {
+			state.favorites = state.favorites.filter((movie) => {
+				return movie.imdbID !== imdbID.payload;
+			});
+		},
 	},
 });
 
 export default favoritesSlice.reducer;
-export const { setFavorite } = favoritesSlice.actions;
+export const { setFavorite, unsetFavorite } = favoritesSlice.actions;
