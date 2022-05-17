@@ -14,17 +14,19 @@ import {
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
+import { setUser } from '../../store/slices/userReducer';
+import { useDispatch } from 'react-redux';
 
 const SignIn = () => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<IInputData>();
 
-	const onSubmit: SubmitHandler<IInputData> = (data) => {
-		console.log(data);
-
+	const onSubmit: SubmitHandler<IInputData> = ({ email, password }) => {
 		const auth = getAuth();
-		signInWithEmailAndPassword(auth, data.email, data.password)
+		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
+				dispatch(setUser(userCredential.user.email));
 				navigate(routes.HOME);
 			})
 			.catch((error) => {
@@ -53,7 +55,7 @@ const SignIn = () => {
 			<StyledRestorePasword>
 				<Link to={routes.RESET_PASSWORD}>Forgot password?</Link>
 			</StyledRestorePasword>
-			<StyledButton>Sign in</StyledButton>
+			<StyledButton type="submit">Sign in</StyledButton>
 			<StyledText>
 				Don’t have an account?{' '}
 				<Link to={routes.SIGN_UP}>
