@@ -79,11 +79,20 @@ export const StyledButtonsContainer = styled.div`
 	grid-template-columns: 1fr 1fr;
 	column-gap: 1px;
 `;
-export const StyledButtonFavorite = styled.button`
+export const StyledButtonFavorite = styled.button<{ isFavorite: boolean }>`
 	padding: 12px;
 
-	background-color: ${Colors.BG_GRAPHITE};
+	background-color: ${({ isFavorite }) => {
+		return isFavorite ? `${Colors.ORANGE}` : `${Colors.BG_GRAPHITE}`;
+	}};
 	border-radius: 10px 0 0 10px;
+
+	&:hover {
+		background-color: #2c3439;
+	}
+	&:active {
+		background-color: #374d54;
+	}
 `;
 export const StyledButtonShare = styled.button`
 	padding: 12px;
