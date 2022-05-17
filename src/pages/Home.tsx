@@ -1,9 +1,7 @@
-const Home = ()=> {
-	return (
-        <a>Home</a>
-		
-	);
+import List from '../components/ListMovie/ListMovie';
+
+export default function Home() {
+  return (
+	<List />
+  )
 }
-
-export default Home;
-
