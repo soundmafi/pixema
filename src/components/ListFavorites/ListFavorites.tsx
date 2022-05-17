@@ -1,26 +1,21 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { RootStore } from '../../store/store';
-import CardItemMovie from '../CardItemMovie/CardItemMovie';
+import CardFavoriteMovie from '../CardFavoriteMovie/CardFavoriteMovie';
 
 export default function ListFavorites() {
+	const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
 
-    const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
-    
 	return (
 		<StyledList>
 			{favorites.map(({ title, poster, imdbID }) => {
 				return (
-					<Link to={`/${imdbID}`} key={imdbID}>
-						<CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />
-					</Link>
+					<CardFavoriteMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />
 				);
 			})}
 		</StyledList>
 	);
-};
-
+}
 
 const StyledList = styled.ul`
 	grid-area: outlet;
@@ -39,3 +34,7 @@ const StyledList = styled.ul`
 	/* max-width: 960px; */
 `;
 
+export const StyledButtonClose = styled.button`
+	position: absolute;
+	background-color: red;
+`;
