@@ -1,7 +1,8 @@
+import ListFavorites from "../components/ListFavorites/ListFavorites";
+
 const Favorites = ()=> {
 	return (
-        <a>Favorites</a>
-		
+        <ListFavorites/>
 	);
 }
 
