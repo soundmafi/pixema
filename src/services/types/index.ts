@@ -81,7 +81,7 @@ export interface IMovieDetails {
 	boxOffice: string;
 	production: string;
 	response: boolean;
-	// type: string;
+	type: string;
 	// awards: string;
 }
 

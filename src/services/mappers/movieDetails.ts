@@ -19,7 +19,7 @@ export const transformMovieDetails = (response: IMovieDetailsResponse): IMovieDe
 		boxOffice: response.BoxOffice,
 		production: response.Production,
 		response: response.Response === 'True' ? true : false,
-		// type: response.Type,
+		type: response.Type,
 		// awards: response.Awards,
 	};
 };
