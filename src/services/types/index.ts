@@ -85,7 +85,6 @@ export interface IMovieDetails {
 	// awards: string;
 }
 
-
 export interface IRequestDetailsParams {
-	imdbID: string;
-}
+	imdbID: string|undefined;
+} 
