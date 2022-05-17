@@ -10,7 +10,7 @@ import { ReactComponent as FavoriteIcon } from './../../assets/Icons/nav-favorit
 import { ReactComponent as ShareIcon } from './../../assets/Icons/icon-share.svg';
 import { ReactComponent as BadgeIcon } from './../../assets/Icons/imdb-rating.svg';
 import { setFavorite } from '../../store/slices/favoritesReducer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	ModifiedStyledBadge,
 	StyledAsideMovie,
@@ -29,7 +29,7 @@ import {
 	StyledTitle,
 	StyledValue,
 } from './styles';
-
+import { RootStore } from '../../store/store';
 
 const MoviePage = () => {
 	const initialMovieDetail: IMovieDetails = {
@@ -50,8 +50,9 @@ const MoviePage = () => {
 		boxOffice: '',
 		production: '',
 		response: true,
-		type: ''
+		type: '',
 	};
+	const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
 
 	const [movieID, setMovieID] = useState<IMovieDetails>(initialMovieDetail);
 	const dispatch = useDispatch();
@@ -66,14 +67,18 @@ const MoviePage = () => {
 		movieApi.getMovieDetails(id).then((movie) => setMovieID(transformMovieDetails(movie)));
 	}, [id]);
 
+	const isFavorite = favorites.filter(({ imdbID }) => imdbID === movieID.imdbID).length > 0;
+
 	const handleMovie = () => {
-		dispatch(setFavorite({
-			title: movieID.title,
-			imdbID: movieID.imdbID,
-			year: movieID.year,
-			poster: movieID.poster,
-			type: movieID.type,
-		}));
+		dispatch(
+			setFavorite({
+				title: movieID.title,
+				imdbID: movieID.imdbID,
+				year: movieID.year,
+				poster: movieID.poster,
+				type: movieID.type,
+			})
+		);
 	};
 
 	return (
@@ -85,7 +90,7 @@ const MoviePage = () => {
 			<StyledAsideMovie>
 				<MoviePoster poster={movieID.poster} />
 				<StyledButtonsContainer>
-					<StyledButtonFavorite onClick={handleMovie}>
+					<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
 						<FavoriteIcon />
 					</StyledButtonFavorite>
 					<StyledButtonShare>
