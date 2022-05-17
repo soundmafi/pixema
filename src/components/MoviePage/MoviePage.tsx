@@ -9,7 +9,7 @@ import Recommendations from '../Recommendations/Recommendations';
 import { ReactComponent as FavoriteIcon } from './../../assets/Icons/nav-favorites.svg';
 import { ReactComponent as ShareIcon } from './../../assets/Icons/icon-share.svg';
 import { ReactComponent as BadgeIcon } from './../../assets/Icons/imdb-rating.svg';
-import { setFavorite } from '../../store/slices/favoritesReducer';
+import { setFavorite, unsetFavorite } from '../../store/slices/favoritesReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	ModifiedStyledBadge,
@@ -70,15 +70,16 @@ const MoviePage = () => {
 	const isFavorite = favorites.filter(({ imdbID }) => imdbID === movieID.imdbID).length > 0;
 
 	const handleMovie = () => {
-		dispatch(
-			setFavorite({
-				title: movieID.title,
-				imdbID: movieID.imdbID,
-				year: movieID.year,
-				poster: movieID.poster,
-				type: movieID.type,
-			})
-		);
+		isFavorite? dispatch(unsetFavorite(movieID.imdbID)) :
+			dispatch(
+				setFavorite({
+					title: movieID.title,
+					imdbID: movieID.imdbID,
+					year: movieID.year,
+					poster: movieID.poster,
+					type: movieID.type,
+				})
+			);
 	};
 
 	return (
