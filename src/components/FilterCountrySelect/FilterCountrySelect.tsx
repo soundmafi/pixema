@@ -18,10 +18,11 @@ const CustomSelect = ({ handleSelect, value, name }: ISelect) => {
 		control: (nativeStyles) => ({
 			...nativeStyles,
 			padding: 16,
+			marginBottom: 50,
+
 			border: 'none',
 			backgroundColor: `${Colors.BG_GRAPHITE}`,
 			borderRadius: 10,
-			marginBottom: 50
 		}),
 
 		indicatorSeparator: (nativeStyles) => ({
@@ -36,11 +37,12 @@ const CustomSelect = ({ handleSelect, value, name }: ISelect) => {
 
 		singleValue: (nativeStyles) => ({
 			...nativeStyles,
+			paddingLeft: 40,
+			
+			textAlign: 'center',
 			fontSize: 18,
 			letterSpacing: -0.3,
 			color: `${Colors.CTX_WHITE}`,
-			paddingLeft: 40,
-			textAlign: 'center',
 		}),
 
 		menuList: (nativeStyles) => ({
@@ -60,7 +62,6 @@ const CustomSelect = ({ handleSelect, value, name }: ISelect) => {
 		<Select
 			styles={customStyles}
 			options={options}
-			// defaultValue={options[1]}
 			value={options.find((option) => option.value === value)}
 			onChange={handleSelect}
 			isMulti={false}

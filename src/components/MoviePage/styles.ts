@@ -26,17 +26,21 @@ export const StyledGenre = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-	${typography.H1}
 	margin-bottom: 24px;
+
+	${typography.H1}
 `;
 
 export const StyledBadge = styled.p`
 	display: block;
+
 	padding: 2px 8px;
+
 	${typography.S3}
+
+	color: var(--txtColor);
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 6px;
-	color: var(--txtColor);
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`
@@ -44,10 +48,11 @@ export const ModifiedStyledBadge = styled(StyledBadge)`
 `;
 
 export const StyledBadgeContainer = styled.div`
+	margin-bottom: 40px;
+
 	display: flex;
 	gap: 20px;
 	justify-content: start;
-	margin-bottom: 40px;
 `;
 
 export const StyledPlot = styled.p`
@@ -60,6 +65,7 @@ export const StyledInfoContainer = styled.div`
 	grid-auto-rows: auto;
 	row-gap: 20px;
 	column-gap: 50px;
+
 	margin-bottom: 56px;
 `;
 
@@ -75,19 +81,23 @@ export const StyledButtonsContainer = styled.div`
 `;
 export const StyledButtonFavorite = styled.button`
 	padding: 12px;
+
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 10px 0 0 10px;
 `;
 export const StyledButtonShare = styled.button`
 	padding: 12px;
+
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 0 10px 10px 0;
 `;
 
 export const StyledButtonClose = styled.button`
 	position: absolute;
+	right: 20%;
+
 	width: 25px;
 	height: 25px;
-	right: 20%;
+
 	background-color: ${Colors.BG_DARK};
 `;

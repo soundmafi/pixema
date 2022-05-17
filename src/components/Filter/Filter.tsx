@@ -28,7 +28,6 @@ const Filter = () => {
 			setCountry(option.value);
 		}
 	};
-	console.log(country);
 
 	const handleClose = () => {
 		dispatch(setStateFilterClose());
@@ -37,9 +36,8 @@ const Filter = () => {
 	return (
 		<StyledFilter isDisable={isDisable}>
 			<StyledButtonClose onClick={handleClose}>
-			<ButtonCloseIcon/>
+				<ButtonCloseIcon />
 			</StyledButtonClose>
-
 			<StyledTitleFilter>Filter</StyledTitleFilter>
 			<StyledTitleParameters>Sort by</StyledTitleParameters>
 			<FilterSorting />

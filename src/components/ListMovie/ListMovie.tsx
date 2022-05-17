@@ -26,7 +26,7 @@ const List = () => {
 		page: 2,
 	};
 	const [requestPrarms, setRequestParams] = useState<IRequestParams>(initialRequestParams);
-	
+
 	useEffect(() => {
 		movieApi
 			.getMoviesByParams(requestPrarms)
@@ -37,7 +37,7 @@ const List = () => {
 		<StyledList>
 			{movies.results.map(({ title, poster, imdbID }) => {
 				return (
-					<Link to ={`/${imdbID}`}  key={imdbID}>
+					<Link to={`/${imdbID}`} key={imdbID}>
 						<CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />
 					</Link>
 				);

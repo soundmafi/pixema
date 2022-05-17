@@ -18,5 +18,6 @@ export const StyledLabel = styled.label`
 export const StyledInputItem = styled.div`
 	display: flex;
 	flex-direction: column;
+
 	margin-bottom: 24px;
 `;

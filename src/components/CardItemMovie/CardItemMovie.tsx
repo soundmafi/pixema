@@ -1,4 +1,3 @@
-
 import MoviePoster from '../MoviePoster/MoviePoster';
 import { StyledCardItemMovie, StyledTitle } from './styles';
 
