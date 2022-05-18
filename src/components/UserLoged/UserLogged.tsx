@@ -7,17 +7,16 @@ import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
 
 const UserLogged = () => {
-	const { isAuth, email} = useSelector(({ user }: RootStore) => user);
+	const { isAuth, user} = useSelector(({ user }: RootStore) => user);
 	return (
 		<StyledUserLogged>
 			{!isAuth?<>
-				{/* navigate(routes.HOME) */}
 		<Link to={routes.SIGN_IN}><StyledButton>Sign in</StyledButton></Link>
 		<Link to={routes.SIGN_UP}><StyledButton>Sign up</StyledButton></Link>
 		</>
 		:<>
 			<StyledBadge>AL</StyledBadge>
-			<StyledUsername>{email}</StyledUsername>
+			<StyledUsername>{user?.email}</StyledUsername>
 			<StyledOpenIcon>
 				<OpenIcon />
 			</StyledOpenIcon>

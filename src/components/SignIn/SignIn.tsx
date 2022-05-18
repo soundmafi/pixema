@@ -26,7 +26,9 @@ const SignIn = () => {
 		const auth = getAuth();
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				dispatch(setUser(userCredential.user.email));
+					console.log(userCredential.user);
+
+				dispatch(setUser(userCredential.user));
 				navigate(routes.HOME);
 			})
 			.catch((error) => {
