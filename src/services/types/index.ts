@@ -85,6 +85,23 @@ export interface IMovieDetails {
 	// awards: string;
 }
 
-export interface IRequestDetailsParams {
-	imdbID: string|undefined;
-} 
+
+export interface IUserResponse {
+	accessToken: string;
+	auth: {};
+	displayName: null | string;
+	email: null | string;
+	emailVerified: boolean;
+	isAnonymous: boolean;
+	metadata: {};
+	phoneNumber: null | string;
+	photoURL: null | string;
+	proactiveRefresh: {};
+	providerData: [{}];
+	providerId: null | string;
+	reloadListener: null | string;
+	reloadUserInfo: {};
+	stsTokenManager: {};
+	tenantId: null | string;
+	uid: null | string;
+}
