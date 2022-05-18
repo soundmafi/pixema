@@ -23,7 +23,7 @@ const List = () => {
 		title: 'love',
 		year: '',
 		type: 'movie',
-		page: 2,
+		page: 4,
 	};
 	const [requestPrarms, setRequestParams] = useState<IRequestParams>(initialRequestParams);
 
@@ -36,11 +36,7 @@ const List = () => {
 	return (
 		<StyledList>
 			{movies.results.map(({ title, poster, imdbID }) => {
-				return (
-					<Link to={`/${imdbID}`} key={imdbID}>
-						<CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />
-					</Link>
-				);
+				return <CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />;
 			})}
 		</StyledList>
 	);

@@ -1,5 +1,5 @@
 import MoviePoster from '../MoviePoster/MoviePoster';
-import { StyledCardItemMovie, StyledTitle } from './styles';
+import { StyledCardItemMovie, StyledLink, StyledTitle } from './styles';
 
 interface IMovie {
 	title: string;
@@ -10,8 +10,10 @@ interface IMovie {
 const CardItemMovie = ({ poster, title, imdbID }: IMovie) => {
 	return (
 		<StyledCardItemMovie key={imdbID}>
-			<MoviePoster poster={poster} />
-			<StyledTitle>{title}</StyledTitle>
+			<StyledLink to={`/${imdbID}`} key={imdbID}>
+				<MoviePoster poster={poster} />
+				<StyledTitle>{title}</StyledTitle>
+			</StyledLink>
 		</StyledCardItemMovie>
 	);
 };

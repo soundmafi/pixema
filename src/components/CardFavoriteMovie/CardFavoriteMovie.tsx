@@ -1,9 +1,8 @@
 import MoviePoster from '../MoviePoster/MoviePoster';
-import { StyledButtonClose, StyledCardItemMovie, StyledTitle } from './styles';
-import { ReactComponent as ButtonRemoveIcon } from './../../assets/Icons/icon-cancel.svg';
+import { StyledButtonClose, StyledCardItemMovie, StyledLink, StyledTitle } from './styles';
+import { ReactComponent as ButtonRemoveIcon } from './../../assets/Icons/trash.svg';
 import { unsetFavorite } from '../../store/slices/favoritesReducer';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 interface IMovie {
 	title: string;
@@ -12,18 +11,19 @@ interface IMovie {
 }
 
 export default function CardFavoriteMovie({ poster, title, imdbID }: IMovie) {
-    const dispatch = useDispatch();
+
+	const dispatch = useDispatch();
 	const handleRemoveFavorite = () => {
 		dispatch(unsetFavorite(imdbID));
 	};
 	return (
 		<StyledCardItemMovie key={imdbID}>
-			<Link to={`/${imdbID}`} key={imdbID}>
+			<StyledLink to={`/${imdbID}`} key={imdbID}>
 				<MoviePoster poster={poster} />
 				<StyledTitle>{title}</StyledTitle>
-			</Link>
-            <StyledButtonClose onClick={handleRemoveFavorite}>
-				<ButtonRemoveIcon />
+			</StyledLink>
+			<StyledButtonClose onClick={handleRemoveFavorite}>
+				<ButtonRemoveIcon viewBox = '-150 -110 750 750'/>
 			</StyledButtonClose>
 		</StyledCardItemMovie>
 	);
