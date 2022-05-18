@@ -13,11 +13,13 @@ const moviesSlice = createSlice({
 	name: 'movies-list',
 	initialState,
 	reducers: {
-		setMovies: (state, action) => {
-            console.log(action); 
-			state = action.payload;
+		setMovies: (state, {payload}) => {
+			state.currentPage = payload.currentPage;
+			state.results =  payload.results;
+			state.totalResults = payload.totalResults;
+			state.currentPage = payload.currentPage;
+			state.totalPages = payload.totalPages;
 		},
-
 	},
 });
 
