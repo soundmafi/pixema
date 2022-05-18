@@ -1,41 +1,24 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
-import { IMovies, IRequestParams } from '../../services/types';
+import { setMovies } from '../../store/slices/moviesReducer';
+import { RootStore } from '../../store/store';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
 
 const List = () => {
-	const initialMovies: IMovies = {
-		response: null,
-		results: [],
-		totalResults: 0,
-		currentPage: 1,
-		totalPages: 0,
-	};
-
-	const [movies, setMovies] = useState<IMovies>(initialMovies);
-
-	const initialRequestParams: IRequestParams = {
-		title: 'love',
-		year: '',
-		type: 'movie',
-		page: 4,
-	};
-	const [requestPrarms, setRequestParams] = useState<IRequestParams>(initialRequestParams);
-
+	const request = useSelector(({ requestSearch }: RootStore) => requestSearch);
+	const moviesResponse = useSelector(({ movies }: RootStore) => movies);
+	const dispatch = useDispatch();
+	
 	useEffect(() => {
-		movieApi
-			.getMoviesByParams(requestPrarms)
-			.then((movies) => setMovies(transformMovies(movies)));
-	}, []);
+		movieApi.getMoviesByParams(request).then((movies) => dispatch(setMovies(transformMovies(movies))));
+	}, [request]);
 
 	return (
 		<StyledList>
-			{movies.results.map(({ title, poster, imdbID }) => {
+			{moviesResponse.results.map(({ title, poster, imdbID }) => {
 				return <CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />;
 			})}
 		</StyledList>
