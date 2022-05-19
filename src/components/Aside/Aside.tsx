@@ -6,7 +6,7 @@ const Aside = () => {
 	return (
 		<StyledAside>
 			<Nav />
-			<Rights />
+			{/* <Rights /> */}
 		</StyledAside>
 	);
 };
