@@ -21,6 +21,9 @@ export const StyledFilter = styled.div<{ isDisable: boolean }>`
 
 	box-shadow: 0px 7px 11px 3px rgba(255, 255, 255, 0.48);
 `;
+
+export const StyledFilterForm = styled.form``;
+
 export const StyledTitleFilter = styled.h2`
 	margin-bottom: 48px;
 	color: ${Colors.CTX_WHITE};
