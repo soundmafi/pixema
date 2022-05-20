@@ -16,7 +16,7 @@ export interface IMovieApi {
 export interface IMoviesApiResponse {
 	Response: string;
 	Search: IMovieApi[];
-	TotalResults: string;
+	totalResults: string;
 }
 
 export interface IMovie {

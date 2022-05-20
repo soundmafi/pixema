@@ -1,11 +1,11 @@
 import { IMovie, IMovies, IMoviesApiResponse } from '../types';
 
-export const transformMovies = (response: IMoviesApiResponse): IMovies => {
+export const transformMovies = (response: IMoviesApiResponse, currentPage: number): IMovies => {
 	return {
 		response: response.Response === 'True' ? true : false,
-		totalResults: Number(response.TotalResults),
-		totalPages: Math.ceil(Number(response.TotalResults) / 10),
-		results: response.Search.map(({Title, imdbID, Poster,Year, Type}): IMovie => {
+		totalResults: Number(response.totalResults),
+		totalPages: Math.ceil(Number(response.totalResults) / 10),
+		results: response.Search.map(({ Title, imdbID, Poster, Year, Type }): IMovie => {
 			return {
 				title: Title,
 				imdbID: imdbID,
@@ -14,5 +14,6 @@ export const transformMovies = (response: IMoviesApiResponse): IMovies => {
 				year: Year,
 			};
 		}),
+		currentPage: currentPage,
 	};
 };
