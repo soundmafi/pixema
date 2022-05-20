@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledList = styled.ul`
-	grid-area: outlet;
-
 	display: flex;
 	gap: 40px;
 	flex-wrap: wrap;
@@ -15,4 +13,9 @@ export const StyledList = styled.ul`
 	list-style: none;
 
 	/* max-width: 960px; */
+`;
+
+export const ListContainer = styled.div`
+	grid-area: outlet;
+	width: 100%;
 `;

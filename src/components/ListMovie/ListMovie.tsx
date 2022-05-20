@@ -5,7 +5,8 @@ import { movieApi } from '../../services/movieApi';
 import { setMovies } from '../../store/slices/moviesReducer';
 import { RootStore } from '../../store/store';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
-import { StyledList } from './styles';
+import Pagination from '../Pagination/Pagination';
+import { ListContainer, StyledList } from './styles';
 
 const List = () => {
 	const request = useSelector(({ requestSearch }: RootStore) => requestSearch);
@@ -19,12 +20,14 @@ const List = () => {
 			dispatch(setMovies(transformMovies(movies,request.page )))});
 	}, [request]);
 
-	return (
+	return (<ListContainer>
+		<Pagination/>
 		<StyledList>
 			{moviesResponse.results.map(({ title, poster, imdbID }) => {
 				return <CardItemMovie key={imdbID} title={title} poster={poster} imdbID={imdbID} />;
 			})}
 		</StyledList>
+		</ListContainer>
 	);
 };
 
