@@ -3,12 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { transformMovieDetails } from '../../services/mappers/movieDetails';
 import { movieApi } from '../../services/movieApi';
 import { IMovieDetails } from '../../services/types';
-import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import Recommendations from '../Recommendations/Recommendations';
-import { ReactComponent as FavoriteIcon } from './../../assets/Icons/nav-favorites.svg';
-import { ReactComponent as ShareIcon } from './../../assets/Icons/icon-share.svg';
-import { ReactComponent as BadgeIcon } from './../../assets/Icons/imdb-rating.svg';
 import { setFavorite, unsetFavorite } from '../../store/slices/favoritesReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -30,6 +26,7 @@ import {
 	StyledValue,
 } from './styles';
 import { RootStore } from '../../store/store';
+import { TrashIcon, FavoriteIcon, ShareIcon, RatingIMDB } from '../../assets/Icons';
 
 const MoviePage = () => {
 	const initialMovieDetail: IMovieDetails = {
@@ -85,7 +82,7 @@ const MoviePage = () => {
 	return (
 		<StyledMoviePage>
 			<StyledButtonClose onClick={handleBack}>
-				<ButtonCloseIcon />
+				<TrashIcon />
 			</StyledButtonClose>
 
 			<StyledAsideMovie>
@@ -105,7 +102,7 @@ const MoviePage = () => {
 				<StyledBadgeContainer>
 					<ModifiedStyledBadge>{movieID.imdbRating}</ModifiedStyledBadge>
 					<StyledBadge>
-						<BadgeIcon />
+						<RatingIMDB />
 						{movieID.imdbRating}
 					</StyledBadge>
 					<StyledBadge>{movieID.runtime}</StyledBadge>

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setStateFilterOpen } from '../../store/slices/filterStateReducer';
 import { StyledButtonOpen, StyledLabel, StyledSearch } from './styles';
-import { ReactComponent as OpenBtnIcon } from './../../assets/Icons/filter-open.svg';
+import { FilterOpenIcon } from '../../assets/Icons';
 
 const Search = () => {
 	const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Search = () => {
 		<StyledLabel>
 			<StyledSearch placeholder="Search" {...register('love')} onChange={handlerSearch} />
 			<StyledButtonOpen onClick={handleOpen}>
-				<OpenBtnIcon width="48" height="32" viewBox="0 0 16 14" />
+				<FilterOpenIcon width="48" height="32" viewBox="0 0 16 14" />
 			</StyledButtonOpen>
 		</StyledLabel>
 	);
