@@ -1,33 +1,29 @@
-import { Link } from 'react-router-dom';
+import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from '../../assets/Icons';
 import { routes } from '../../routes/routes';
-import { StyledNav } from './styles';
-import { ReactComponent as HomeIcon } from './../../assets/Icons/nav-home.svg';
-import { ReactComponent as TrendsIcon } from './../../assets/Icons/nav-trends.svg';
-import { ReactComponent as FavoritesIcon } from './../../assets/Icons/nav-favorites.svg';
-import { ReactComponent as SettingsIcon } from './../../assets/Icons/nav-settings.svg';
+import { StyledLink, StyledNav, StyledText } from './styles';
 
 const Nav = () => {
 	return (
 		<StyledNav>
-			<Link to={routes.HOME}>
+			<StyledLink to={routes.HOME}>
 				<HomeIcon />
-				Home
-			</Link>
+				<StyledText>Home</StyledText> 
+			</StyledLink>
 
-			<Link to={routes.TRENDS}>
+			<StyledLink to={routes.TRENDS}>
 				<TrendsIcon />
-				Trends
-			</Link>
+				<StyledText>Trends</StyledText>
+			</StyledLink>
 
-			<Link to={routes.FAVORITES}>
-				<FavoritesIcon />
-				Favorites
-			</Link>
+			<StyledLink to={routes.FAVORITES}>
+				<FavoriteIcon />
+				<StyledText>Favorites</StyledText>
+			</StyledLink>
 
-			<Link to={routes.SETTINGS}>
+			<StyledLink to={routes.SETTINGS}>
 				<SettingsIcon />
-				Settings
-			</Link>
+				<StyledText>Settings</StyledText>
+			</StyledLink>
 		</StyledNav>
 	);
 };
