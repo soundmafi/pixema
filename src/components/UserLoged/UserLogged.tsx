@@ -1,13 +1,13 @@
 import { StyledBadge, StyledOpenIcon, StyledUserLogged, StyledUsername } from './styles';
 import { ReactComponent as OpenIcon } from './../../assets/Icons/user-open.svg';
 import { StyledButton } from '../SignIn/styles';
-import { useSelector } from 'react-redux';
 import { RootStore } from '../../store/store';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
 
 const UserLogged = () => {
-	const { isAuth, user} = useSelector(({ user }: RootStore) => user);
+	const { isAuth, user} = useAppSelector(({ user }: RootStore) => user);
 	return (
 		<StyledUserLogged>
 			{!isAuth?<>

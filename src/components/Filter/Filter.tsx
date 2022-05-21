@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';
 import { RootStore } from '../../store/store';
@@ -24,7 +25,7 @@ import {
 const Filter = () => {
 	const { register, handleSubmit } = useForm<IFilterRequest>();
 	const dispatch = useDispatch();
-	const { isDisable } = useSelector(({ filterState }: RootStore) => filterState);
+	const { isDisable } = useAppSelector(({ filterState }: RootStore) => filterState);
 
 	// state for selected type (Movie/Series/Episode)
 	const [typeMovie, setTypeMovie] = useState<string>('Movie');
@@ -120,9 +121,9 @@ const Filter = () => {
 
 export default Filter;
 
-
-
-					{/* <StyledTitleParameters>Full or short movie name</StyledTitleParameters> */}
+{
+	/* <StyledTitleParameters>Full or short movie name</StyledTitleParameters> */
+}
 {
 	/* <StyledTitleParameters>Genre</StyledTitleParameters>
 			<FilterInput inputName={'Genre'} inputType={'text'} placeholder={'Genre text'} /> */

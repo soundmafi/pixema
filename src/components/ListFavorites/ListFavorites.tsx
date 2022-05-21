@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
 import { RootStore } from '../../store/store';
 import CardFavoriteMovie from '../CardFavoriteMovie/CardFavoriteMovie';
 
 export default function ListFavorites() {
-	const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
+	const { favorites } = useAppSelector(({ favorites }: RootStore) => favorites);
 
 	return (
 		<StyledList>

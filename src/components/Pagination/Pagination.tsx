@@ -1,14 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
 import { setCurrentPage } from '../../store/slices/requestReducer';
 import { RootStore } from '../../store/store';
-import { StyledButton, StyledContainer, StyledTotalPage } from './styles';
+import { StyledButton, StyledContainer } from './styles';
 
 const Pagination = () => {
-	const request = useSelector(({ requestSearch }: RootStore) => requestSearch);
+	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
 	const dispatch = useDispatch();
 
-	const totalPages = useSelector(({ movies }: RootStore) => movies.totalPages);
+	const totalPages = useAppSelector(({ movies }: RootStore) => movies.totalPages);
 
 	const handlePagePrevious = (e: React.MouseEvent<HTMLButtonElement>) => {
 		dispatch(setCurrentPage({ ...request, page: request.page - 1 }));
@@ -24,7 +25,7 @@ const Pagination = () => {
 			<StyledButton>{request.page}</StyledButton>
 			<StyledButton onClick={handlePageNext}>Next</StyledButton>
 
-			<StyledTotalPage>TotalPages: {totalPages}</StyledTotalPage>
+			{/* <StyledTotalPage>Total {totalPages}</StyledTotalPage> */}
 		</StyledContainer>
 	);
 };
