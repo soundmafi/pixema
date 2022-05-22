@@ -1,29 +1,40 @@
+import { useState } from 'react';
 import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from '../../assets/Icons';
 import { routes } from '../../routes/routes';
+import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { RootStore } from '../../store/store';
 import { StyledLink, StyledNav, StyledText } from './styles';
 
 const Nav = () => {
+	const [isActive, setIsActive] = useState('Home');
+	const { isAuth } = useAppSelector(({ user }: RootStore) => user);
+
 	return (
 		<StyledNav>
-			<StyledLink to={routes.HOME}>
+			<StyledLink to={routes.HOME} onClick={() => setIsActive('Home')}>
 				<HomeIcon />
-				<StyledText>Home</StyledText> 
+				<StyledText>Home</StyledText>
 			</StyledLink>
 
-			<StyledLink to={routes.TRENDS}>
-				<TrendsIcon />
+			<StyledLink to={routes.TRENDS} onClick={() => setIsActive('Trends')}>
+				<TrendsIcon >
+					<path fill="#7B61FF"> </path>
+				</TrendsIcon>
 				<StyledText>Trends</StyledText>
 			</StyledLink>
+			{isAuth && (
+				<>
+					<StyledLink to={routes.FAVORITES} onClick={() => setIsActive('Favorite')}>
+						<FavoriteIcon />
+						<StyledText>Favorites</StyledText>
+					</StyledLink>
 
-			<StyledLink to={routes.FAVORITES}>
-				<FavoriteIcon />
-				<StyledText>Favorites</StyledText>
-			</StyledLink>
-
-			<StyledLink to={routes.SETTINGS}>
-				<SettingsIcon />
-				<StyledText>Settings</StyledText>
-			</StyledLink>
+					<StyledLink to={routes.SETTINGS} onClick={() => setIsActive('Setting')}>
+						<SettingsIcon />
+						<StyledText>Settings</StyledText>
+					</StyledLink>
+				</>
+			)}
 		</StyledNav>
 	);
 };

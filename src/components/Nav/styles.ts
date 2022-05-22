@@ -30,5 +30,15 @@ export const StyledLink = styled(Link)`
 	
 	&:hover {
 		background-color: #353535;
+		box-shadow: 0px 2px 9px 0px rgb(192, 192, 192 , 0.17);
 	}
+
+	&:active{
+		box-shadow: 0px 2px 10px 2px rgb(192, 192, 192, 0.2);
+		background-color: #434343;
+	}
+
+	/* box-shadow: 0px 4px 26px 2px rgb(192, 192, 192, 0.2); */
+	
+
 `;
