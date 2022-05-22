@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
@@ -29,3 +30,10 @@ export const StyledUsername = styled.p`
 `;
 
 export const StyledOpenIcon = styled.div``;
+
+export const StyledLink = styled(Link)`
+	${typography.S2}
+
+	color: ${Colors.CTX_WHITE};
+	text-decoration: none;
+`;

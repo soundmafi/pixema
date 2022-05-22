@@ -1,4 +1,10 @@
-import { StyledBadge, StyledOpenIcon, StyledUserLogged, StyledUsername } from './styles';
+import {
+	StyledBadge,
+	StyledLink,
+	StyledOpenIcon,
+	StyledUserLogged,
+	StyledUsername,
+} from './styles';
 import { ReactComponent as OpenIcon } from './../../assets/Icons/user-open.svg';
 import { StyledButton } from '../SignIn/styles';
 import { RootStore } from '../../store/store';
@@ -7,21 +13,30 @@ import { routes } from '../../routes/routes';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
 
 const UserLogged = () => {
-	const { isAuth, user} = useAppSelector(({ user }: RootStore) => user);
+	const { isAuth, user } = useAppSelector(({ user }: RootStore) => user);
 	return (
-		<StyledUserLogged>
-			{!isAuth?<>
-		<Link to={routes.SIGN_IN}><StyledButton>Sign in</StyledButton></Link>
-		<Link to={routes.SIGN_UP}><StyledButton>Sign up</StyledButton></Link>
-		</>
-		:<>
-			<StyledBadge>AL</StyledBadge>
-			<StyledUsername>{user?.email}</StyledUsername>
-			<StyledOpenIcon>
-				<OpenIcon />
-			</StyledOpenIcon>
-			</>}
-		</StyledUserLogged>
+		<StyledLink to={routes.SETTINGS}>
+			<StyledUserLogged>
+				{!isAuth ? (
+					<>
+						<Link to={routes.SIGN_IN}>
+							<StyledButton>Sign in</StyledButton>
+						</Link>
+						<Link to={routes.SIGN_UP}>
+							<StyledButton>Sign up</StyledButton>
+						</Link>
+					</>
+				) : (
+					<>
+						<StyledBadge>AL</StyledBadge>
+						<StyledUsername>{user?.email}</StyledUsername>
+						<StyledOpenIcon>
+							<OpenIcon />
+						</StyledOpenIcon>
+					</>
+				)}
+			</StyledUserLogged>
+		</StyledLink>
 	);
 };
 
