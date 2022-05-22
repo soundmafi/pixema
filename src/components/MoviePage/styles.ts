@@ -89,9 +89,15 @@ export const StyledButtonFavorite = styled.button<{ isFavorite: boolean }>`
 
 	&:hover {
 		background-color: #2c3439;
+		background-color: ${({ isFavorite }) => {
+		return isFavorite ? `${Colors.ORANGE}` : `#2c3439`;
+	}};
 	}
 	&:active {
 		background-color: #374d54;
+		background-color: ${({ isFavorite }) => {
+		return isFavorite ? `${Colors.ORANGE}` : `${Colors.BG_GRAPHITE}`;
+	}};
 	}
 `;
 export const StyledButtonShare = styled.button`
