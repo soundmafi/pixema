@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
-import { RootStore } from '../../store/store';
+import { getFavorites } from '../../store/selectors/favoriteSelector';
 import CardFavoriteMovie from '../CardFavoriteMovie/CardFavoriteMovie';
 
 export default function ListFavorites() {
-	const { favorites } = useAppSelector(({ favorites }: RootStore) => favorites);
+	const { favorites } = useAppSelector(getFavorites);
 
 	return (
 		<StyledList>
