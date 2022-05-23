@@ -7,13 +7,13 @@ import {
 } from './styles';
 import { ReactComponent as OpenIcon } from './../../assets/Icons/user-open.svg';
 import { StyledButton } from '../SignIn/styles';
-import { RootStore } from '../../store/store';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { getUser } from '../../store/selectors/userSelectors';
 
 const UserLogged = () => {
-	const { isAuth, user } = useAppSelector(({ user }: RootStore) => user);
+	const { isAuth, user } = useAppSelector(getUser);
 	return (
 		<StyledLink to={routes.SETTINGS}>
 			<StyledUserLogged>

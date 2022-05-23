@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from '../../assets/Icons';
 import { routes } from '../../routes/routes';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
-import { RootStore } from '../../store/store';
+import { getUser } from '../../store/selectors/userSelectors';
 import { StyledLink, StyledNav, StyledText } from './styles';
 
 const Nav = () => {
 	const [isActive, setIsActive] = useState('Home');
-	const { isAuth } = useAppSelector(({ user }: RootStore) => user);
+	const { isAuth } = useAppSelector(getUser);
 
 	return (
 		<StyledNav>
