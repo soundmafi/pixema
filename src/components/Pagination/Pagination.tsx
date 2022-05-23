@@ -2,12 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
 import { getTotalPages } from '../../store/selectors/moviesSelectors';
+import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setCurrentPage } from '../../store/slices/requestReducer';
-import { RootStore } from '../../store/store';
 import { StyledButton, StyledContainer } from './styles';
 
 const Pagination = () => {
-	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
+	const request = useAppSelector(getRequestSearch);
 	const dispatch = useDispatch();
 
 	const totalPages = useAppSelector(getTotalPages);
