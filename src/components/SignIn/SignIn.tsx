@@ -15,10 +15,10 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import { setUser } from '../../store/slices/userReducer';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks/hooks';
 
 const SignIn = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<IInputData>();
 

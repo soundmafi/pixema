@@ -1,11 +1,12 @@
 import { ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks/hooks';
 import { setDark, setWhite } from '../../store/slices/themeReducer';
 import { RootStore } from '../../store/store';
 import { StyledInput, StyledInputLabel, StyledSlider } from './styles';
 
 const Switch = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { themeType } = useSelector(({ themeType }: RootStore) => themeType);
 
 	const checkboxHandle = (e: ChangeEvent<HTMLInputElement>) => {

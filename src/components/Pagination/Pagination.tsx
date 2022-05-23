@@ -1,6 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { getTotalPages } from '../../store/selectors/moviesSelectors';
 import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setCurrentPage } from '../../store/slices/requestReducer';
@@ -8,7 +7,7 @@ import { StyledButton, StyledContainer } from './styles';
 
 const Pagination = () => {
 	const request = useAppSelector(getRequestSearch);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const totalPages = useAppSelector(getTotalPages);
 

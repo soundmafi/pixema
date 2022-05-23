@@ -6,7 +6,7 @@ import { IMovieDetails } from '../../services/types';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import Recommendations from '../Recommendations/Recommendations';
 import { setFavorite, unsetFavorite } from '../../store/slices/favoritesReducer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
 	ModifiedStyledBadge,
 	StyledAsideMovie,
@@ -27,6 +27,7 @@ import {
 } from './styles';
 import { RootStore } from '../../store/store';
 import { TrashIcon, FavoriteIcon, ShareIcon, RatingIMDB } from '../../assets/Icons';
+import { useAppDispatch } from '../../store/hooks/hooks';
 
 const MoviePage = () => {
 	const initialMovieDetail: IMovieDetails = {
@@ -52,7 +53,7 @@ const MoviePage = () => {
 	const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
 
 	const [movieID, setMovieID] = useState<IMovieDetails>(initialMovieDetail);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const navigate = useNavigate();
 

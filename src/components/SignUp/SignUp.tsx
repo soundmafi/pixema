@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
 import {
@@ -13,10 +13,11 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { setUser } from '../../store/slices/userReducer';
 import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
+import { useAppDispatch } from '../../store/hooks/hooks';
 
 const SignUp = () => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { register, handleSubmit } = useForm<IInputData>();
 
 	const onSubmit: SubmitHandler<IInputData> = (data) => {

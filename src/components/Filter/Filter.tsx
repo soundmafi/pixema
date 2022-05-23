@@ -1,11 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { filterState } from '../../store/selectors/filterSelectors';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';
-import { RootStore } from '../../store/store';
 import { IFilterRequest } from '../../types/types';
 import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 import FilterInput from '../FilterInput/FilterInput';
@@ -25,7 +23,7 @@ import {
 
 const Filter = () => {
 	const { register, handleSubmit } = useForm<IFilterRequest>();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { isDisable } = useAppSelector(filterState);
 
 	// state for selected type (Movie/Series/Episode)

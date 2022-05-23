@@ -1,8 +1,8 @@
 import MoviePoster from '../MoviePoster/MoviePoster';
 import { StyledButtonClose, StyledCardItemMovie, StyledLink, StyledTitle } from './styles';
 import { unsetFavorite } from '../../store/slices/favoritesReducer';
-import { useDispatch } from 'react-redux';
 import { TrashIcon } from '../../assets/Icons';
+import { useAppDispatch } from '../../store/hooks/hooks';
 
 interface IMovie {
 	title: string;
@@ -11,7 +11,7 @@ interface IMovie {
 }
 
 export default function CardFavoriteMovie({ poster, title, imdbID }: IMovie) {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const handleRemoveFavorite = () => {
 		dispatch(unsetFavorite(imdbID));
 	};

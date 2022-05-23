@@ -1,12 +1,12 @@
 import { ChangeEvent, MouseEvent } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { setStateFilterOpen } from '../../store/slices/filterStateReducer';
 import { StyledButtonOpen, StyledLabel, StyledSearch } from './styles';
 import { FilterOpenIcon } from '../../assets/Icons';
+import { useAppDispatch } from '../../store/hooks/hooks';
 
 const Search = () => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const { register, handleSubmit } = useForm();
 	const handlerSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		return console.log(e.target.value);

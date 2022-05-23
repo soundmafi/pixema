@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
-import { useAppSelector } from '../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { getMoviesResponse } from '../../store/selectors/moviesSelectors';
 import { setMovies } from '../../store/slices/moviesReducer';
 import { RootStore } from '../../store/store';
@@ -13,7 +12,7 @@ import { ListContainer, StyledList } from './styles';
 const List = () => {
 	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
 	const moviesResponse = useAppSelector(getMoviesResponse);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		movieApi.getMoviesByParams(request).then((movies) => {
