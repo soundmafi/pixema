@@ -1,7 +1,12 @@
+import AuthenticationContainer from '../components/AuthenticationContainer/AuthenticationContainer';
 import SignUp from '../components/SignUp/SignUp';
 
 const Register = () => {
-	return <SignUp />;
+	return (
+		<AuthenticationContainer >
+			<SignUp />
+		</AuthenticationContainer>
+	);
 };
 
 export default Register;

@@ -1,9 +1,12 @@
-import ResetPassword from '../components/ResetPassword/ResetPassword'
+import AuthenticationContainer from '../components/AuthenticationContainer/AuthenticationContainer';
+import ResetPassword from '../components/ResetPassword/ResetPassword';
 
 const Reset = () => {
-  return (
-    <ResetPassword />
-  )
-}
+	return (
+		<AuthenticationContainer>
+			<ResetPassword />
+		</AuthenticationContainer>
+	);
+};
 
-export default Reset
+export default Reset;
