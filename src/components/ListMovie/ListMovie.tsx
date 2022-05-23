@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { getMoviesResponse } from '../../store/selectors/moviesSelectors';
 import { setMovies } from '../../store/slices/moviesReducer';
 import { RootStore } from '../../store/store';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
@@ -11,7 +12,7 @@ import { ListContainer, StyledList } from './styles';
 
 const List = () => {
 	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
-	const moviesResponse = useAppSelector(({ movies }: RootStore) => movies);
+	const moviesResponse = useAppSelector(getMoviesResponse);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

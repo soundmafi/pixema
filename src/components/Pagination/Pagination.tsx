@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { getTotalPages } from '../../store/selectors/moviesSelectors';
 import { setCurrentPage } from '../../store/slices/requestReducer';
 import { RootStore } from '../../store/store';
 import { StyledButton, StyledContainer } from './styles';
@@ -9,7 +10,7 @@ const Pagination = () => {
 	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
 	const dispatch = useDispatch();
 
-	const totalPages = useAppSelector(({ movies }: RootStore) => movies.totalPages);
+	const totalPages = useAppSelector(getTotalPages);
 
 	const handlePagePrevious = (e: React.MouseEvent<HTMLButtonElement>) => {
 		dispatch(setCurrentPage({ ...request, page: request.page - 1 }));

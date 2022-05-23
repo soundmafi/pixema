@@ -1,11 +1,11 @@
 import Slider from 'react-slick';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
-import { RootStore } from '../../store/store';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles.css';
 import CardRecomendation from '../CardRecomendation/CardRecomendation';
 import { StyledCardContainer, StyledRecommendation, StyledTitleRecommendation } from './styles';
+import { getMoviesList } from '../../store/selectors/moviesSelectors';
 
 const Recommendations = () => {
 	const sliderSettings = {
@@ -14,7 +14,7 @@ const Recommendations = () => {
 		infinite: true,
 	};
 
-	const moviesList = useAppSelector(({ movies }: RootStore) => movies.results);
+	const moviesList = useAppSelector(getMoviesList);
 
 	return (
 		<StyledRecommendation>
