@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { filterState } from '../../store/selectors/filterSelectors';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';
 import { RootStore } from '../../store/store';
@@ -25,10 +26,11 @@ import {
 const Filter = () => {
 	const { register, handleSubmit } = useForm<IFilterRequest>();
 	const dispatch = useDispatch();
-	const { isDisable } = useAppSelector(({ filterState }: RootStore) => filterState);
+	const { isDisable } = useAppSelector(filterState);
 
 	// state for selected type (Movie/Series/Episode)
 	const [typeMovie, setTypeMovie] = useState<string>('Movie');
+
 	const isSelected = (value: string): boolean => typeMovie === value;
 	const handleTypeSort = (e: ChangeEvent<HTMLInputElement>): void => {
 		setTypeMovie(e.currentTarget.value);
