@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { getMoviesResponse } from '../../store/selectors/moviesSelectors';
 import { setMovies } from '../../store/slices/moviesReducer';
 import { RootStore } from '../../store/store';

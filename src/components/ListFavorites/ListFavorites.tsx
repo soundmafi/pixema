@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { getFavorites } from '../../store/selectors/favoriteSelector';
 import CardFavoriteMovie from '../CardFavoriteMovie/CardFavoriteMovie';
 

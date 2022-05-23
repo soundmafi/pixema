@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FavoriteIcon, HomeIcon, SettingsIcon, TrendsIcon } from '../../assets/Icons';
 import { routes } from '../../routes/routes';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { getUser } from '../../store/selectors/userSelectors';
 import { StyledLink, StyledNav, StyledText } from './styles';
 

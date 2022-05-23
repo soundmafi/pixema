@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { getTotalPages } from '../../store/selectors/moviesSelectors';
 import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setCurrentPage } from '../../store/slices/requestReducer';

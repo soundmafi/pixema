@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { filterState } from '../../store/selectors/filterSelectors';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';

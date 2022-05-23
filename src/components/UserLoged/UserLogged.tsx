@@ -9,7 +9,7 @@ import { ReactComponent as OpenIcon } from './../../assets/Icons/user-open.svg';
 import { StyledButton } from '../SignIn/styles';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
-import { useAppSelector } from '../../store/hooks/useAppSelector';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { getUser } from '../../store/selectors/userSelectors';
 
 const UserLogged = () => {
