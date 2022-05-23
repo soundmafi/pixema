@@ -19,5 +19,7 @@ export const StyledPoster = styled.img`
 	border-radius: 10px;
 	object-fit: cover;
 
-	box-shadow: 0px 3px 34px 6px rgba(176, 187, 195, 0.2);
+	/* box-shadow: 0px 3px 34px 6px rgba(176, 187, 195, 0.2); */
+
+	box-shadow: 0px 4px 26px 2px rgb(192, 192, 192, 0.2);
 `;
