@@ -16,7 +16,6 @@ class MovieServices {
 			y: params.year,
 			page: params.page,
 		};
-
 		const { data } = await this.api.get('/', { params: body });
 		return data;
 	}
@@ -25,8 +24,16 @@ class MovieServices {
 		const request = {
 			i: params,
 		};
-
 		const { data } = await this.api.get<any>('/', { params: request });
+		return data;
+	}
+
+	public async getMovieTitleSearch(params: IRequestParams) {
+		const search = {
+			s: params,
+		};
+
+		const { data } = await this.api.get('/', { params: search });
 		return data;
 	}
 }
