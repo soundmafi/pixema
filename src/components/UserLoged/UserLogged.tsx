@@ -29,7 +29,7 @@ const UserLogged = () => {
 				) : (
 					<>
 						<StyledBadge>AL</StyledBadge>
-						<StyledUsername>{user?.email}</StyledUsername>
+						<StyledUsername>{user?.displayName}</StyledUsername>
 						<StyledOpenIcon>
 							<OpenIcon />
 						</StyledOpenIcon>
