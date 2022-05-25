@@ -21,12 +21,7 @@ const requestSlice = createSlice({
 
 		setCurrentPage: (state, { payload }) => {
 			state.page = payload.page;
-			state.title = payload.title;
-			state.type = payload.type;
-			state.year = payload.year;
 		},
-		// setCurrentPageNext
-		// setCurrentPage
 	},
 });
 

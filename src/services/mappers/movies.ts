@@ -1,6 +1,7 @@
 import { IMovie, IMovies, IMoviesApiResponse } from '../types';
 
-export const transformMovies = (response: IMoviesApiResponse, currentPage: number): IMovies => {
+export const transformMovies = (response: IMoviesApiResponse): IMovies => {
+
 	return {
 		response: response.Response === 'True' ? true : false,
 		totalResults: Number(response.totalResults),
@@ -14,6 +15,6 @@ export const transformMovies = (response: IMoviesApiResponse, currentPage: numbe
 				year: Year,
 			};
 		}),
-		currentPage: currentPage,
+		currentPage: 1,
 	};
 };
