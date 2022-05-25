@@ -16,7 +16,7 @@ const List = () => {
 
 	useEffect(() => {
 		movieApi.getMoviesByParams(request).then((movies) => {
-			dispatch(setMovies(transformMovies(movies, request.page)));
+			dispatch(setMovies(transformMovies(movies)));
 		});
 	}, [request]);
 
