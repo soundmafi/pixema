@@ -9,7 +9,7 @@ type InputProps = {
 	value?: string;
 	placeholder?: string;
 	register: UseFormRegister<IInputData>;
-	required: boolean;
+	required?: boolean;
 };
 
 const InputSetting = ({keyData, inputName, 
