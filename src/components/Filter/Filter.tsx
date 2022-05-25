@@ -40,6 +40,7 @@ const Filter = () => {
 			title: title,
 			year: year,
 			type: typeMovie,
+			page: 1
 		};
 		dispatch(setRequest(newRequest));
 	};
