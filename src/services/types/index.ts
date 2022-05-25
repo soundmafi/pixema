@@ -89,13 +89,13 @@ export interface IMovieDetails {
 export interface IUserResponse {
 	accessToken: string;
 	auth: {};
-	displayName: null | string;
-	email: null | string;
+	displayName:  string;
+	email:  string;
 	emailVerified: boolean;
 	isAnonymous: boolean;
 	metadata: {};
 	phoneNumber: null | string;
-	photoURL: null | string;
+	photoURL:  string;
 	proactiveRefresh: {};
 	providerData: [{}];
 	providerId: null | string;
