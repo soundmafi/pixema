@@ -8,7 +8,7 @@ import { ReactComponent as TrendsIcon } from './trends.svg';
 import { ReactComponent as CloseIcon } from './cancel.svg';
 import { ReactComponent as FavoriteIcon } from './favorites.svg';
 import { ReactComponent as HomeIcon } from './home.svg';
-
+import { ReactComponent as MenuMobileIcon } from './menu-mobile.svg';
 
 export {
 	TrashIcon,
@@ -20,5 +20,6 @@ export {
 	TrendsIcon,
 	CloseIcon,
 	FavoriteIcon,
-    HomeIcon
+	HomeIcon,
+	MenuMobileIcon,
 };
