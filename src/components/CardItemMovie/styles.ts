@@ -5,17 +5,14 @@ import { typography } from '../../ui/typography';
 
 export const StyledCardItemMovie = styled.li`
 	display: block;
-
-	width: 266px;
 `;
 
 export const StyledTitle = styled.p`
 	${typography.S2}
 `;
 export const StyledLink = styled(Link)`
-
 	${typography.S2}
-	
+
 	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
 `;
