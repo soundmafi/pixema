@@ -6,7 +6,7 @@ export interface INavBar {
 	isOpen: boolean;
 }
 
-const NavBar = ({isOpen}:INavBar) => {
+const NavBar = ({ isOpen }: INavBar) => {
 	return (
 		<StyledNavbar isOpen={isOpen}>
 			<UserLogged />

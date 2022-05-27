@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
 
 export const StyledUserLogged = styled.div`
@@ -9,6 +10,10 @@ export const StyledUserLogged = styled.div`
 	align-items: center;
 
 	cursor: pointer;
+	
+	${media.TABLET} {
+		margin-bottom: 15px;
+	}
 `;
 export const StyledBadge = styled.div`
 	display: flex;

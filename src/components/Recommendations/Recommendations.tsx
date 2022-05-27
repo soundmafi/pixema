@@ -17,7 +17,7 @@ const Recommendations = () => {
 		slidersCounting = 3;
 		slidersScroll = 3;
 	} else {
-		slidersCounting = 2;
+		slidersCounting = 3;
 		slidersScroll = 2;
 	}
 	const sliderSettings = {

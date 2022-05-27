@@ -15,7 +15,7 @@ import { getUser } from '../../store/selectors/userSelectors';
 const UserLogged = () => {
 	const { isAuth, user } = useAppSelector(getUser);
 	return (
-		<StyledLink to={routes.SETTINGS}>
+		// <StyledLink to={routes.SETTINGS}>
 			<StyledUserLogged>
 				{!isAuth ? (
 					<>
@@ -36,7 +36,7 @@ const UserLogged = () => {
 					</>
 				)}
 			</StyledUserLogged>
-		</StyledLink>
+		// </StyledLink>
 	);
 };
 

@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
 
 export const StyledNav = styled.nav`
 	display: grid;
 	grid-row-gap: 40px;
+
+	${media.TABLET} {
+		grid-row-gap: 10px;
+	}
+	
 `;
 
 export const StyledText = styled.p`
@@ -38,7 +44,5 @@ export const StyledLink = styled(Link)`
 		background-color: #434343;
 	}
 
-	/* box-shadow: 0px 4px 26px 2px rgb(192, 192, 192, 0.2); */
-	
 
 `;
