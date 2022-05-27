@@ -24,10 +24,6 @@ export const StyledLink = styled(Link)`
 	text-decoration: none;
 `;
 
-
-
-
-
 export const StyledRecommendation = styled.div`
 	grid-area: recommendation;
 `;

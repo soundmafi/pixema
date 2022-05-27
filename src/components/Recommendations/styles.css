@@ -2,7 +2,7 @@
 {
     position: relative;
 
-    width: 820px;
+    width: 768px;
 
     display: grid;
     column-gap: 10px;
@@ -15,8 +15,8 @@
     top: -5%;
     left: 0%;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     transform: translate(0, -50%);
     cursor: pointer;
@@ -27,14 +27,13 @@
 }
 
 .slick-next {
-
     line-height: 0;
     position: absolute;
     top: -5%;
     left: 10%;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     transform: translate(0, -50%);
     cursor: pointer;
@@ -68,6 +67,8 @@
 .slick-slider .slick-track,
 .slick-slider .slick-list
 {
+    width: 768px;
+    
     -webkit-transform: translate3d(0, 0, 0);
        -moz-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);

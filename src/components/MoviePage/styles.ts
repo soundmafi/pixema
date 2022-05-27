@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
+import { media } from '../../ui/media';
 
 export const StyledMoviePage = styled.div`
+	grid-area: outlet;
 	display: grid;
-	grid-template-columns: 0.2fr 1fr;
+	justify-content: center;
+	grid-template-columns: 0.1fr 1fr;
 	column-gap: 42px;
 	grid-template-areas:
 		'movieAside movieMain'
 		'movieAside recommendation';
+		${media.TABLET} {
+			grid-template-areas:
+		'movieAside movieMain'
+		'recommendation recommendation';
+	}
 `;
 
 export const StyledAsideMovie = styled.div`
@@ -56,6 +64,8 @@ export const StyledBadgeContainer = styled.div`
 `;
 
 export const StyledPlot = styled.p`
+	display: block;
+	overflow: hidden;
 	margin-bottom: 40px;
 `;
 
@@ -90,14 +100,14 @@ export const StyledButtonFavorite = styled.button<{ isFavorite: boolean }>`
 	&:hover {
 		background-color: #2c3439;
 		background-color: ${({ isFavorite }) => {
-		return isFavorite ? `${Colors.ORANGE}` : `#2c3439`;
-	}};
+			return isFavorite ? `${Colors.ORANGE}` : `#2c3439`;
+		}};
 	}
 	&:active {
 		background-color: #374d54;
 		background-color: ${({ isFavorite }) => {
-		return isFavorite ? `${Colors.ORANGE}` : `${Colors.BG_GRAPHITE}`;
-	}};
+			return isFavorite ? `${Colors.ORANGE}` : `${Colors.BG_GRAPHITE}`;
+		}};
 	}
 `;
 export const StyledButtonShare = styled.button`

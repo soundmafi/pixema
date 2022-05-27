@@ -6,11 +6,23 @@ import './styles.css';
 import CardRecomendation from '../CardRecomendation/CardRecomendation';
 import { StyledCardContainer, StyledRecommendation, StyledTitleRecommendation } from './styles';
 import { getMoviesList } from '../../store/selectors/moviesSelectors';
+import useWindowSize from '../../store/hooks/useWindowSize';
 
 const Recommendations = () => {
+	const windowWidth = useWindowSize();
+	let slidersCounting = 0;
+	let slidersScroll = 0;
+
+	if (windowWidth.width > 768) {
+		slidersCounting = 3;
+		slidersScroll = 3;
+	} else {
+		slidersCounting = 2;
+		slidersScroll = 2;
+	}
 	const sliderSettings = {
-		slidesToShow: 3,
-		slidesToScroll: 3,
+		slidesToShow: slidersCounting,
+		slidesToScroll: slidersScroll,
 		infinite: true,
 	};
 
