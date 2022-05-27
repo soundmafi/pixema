@@ -4,23 +4,22 @@ import { typography } from '../../ui/typography';
 
 export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	position: absolute;
-	top: 38px;
-	right: 10px;
-
-	display: ${({ isDisable }) => {
-		return isDisable ? `grid` : `none`;
+	top: ${({ isDisable }) => {
+		return isDisable ? `38px` : `-600px`;
 	}};
+	right: 10px;
 
 	grid-template-columns: 1fr;
 
 	padding: 48px 40px;
-	/* max-width: 518px; */
 
 	border-radius: 10px;
 	border: 1px solid ${Colors.CTX_LIGHT};
 	background-color: ${Colors.BG_DARK};
 
 	box-shadow: 0px 7px 11px 3px rgba(255, 255, 255, 0.48);
+
+	transition: top 0.3s ease-in-out;
 `;
 
 export const StyledFilterForm = styled.form``;
