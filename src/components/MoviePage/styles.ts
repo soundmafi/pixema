@@ -119,7 +119,8 @@ export const StyledButtonShare = styled.button`
 
 export const StyledButtonClose = styled.button`
 	position: absolute;
-	right: 20%;
+	left: 40px;
+	top: 120px;
 
 	width: 25px;
 	height: 25px;

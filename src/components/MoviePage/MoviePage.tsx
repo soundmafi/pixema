@@ -26,7 +26,7 @@ import {
 	StyledValue,
 } from './styles';
 import { RootStore } from '../../store/store';
-import { TrashIcon, FavoriteIcon, ShareIcon, RatingIMDB } from '../../assets/Icons';
+import { FavoriteIcon, ShareIcon, RatingIMDB, BackIcon } from '../../assets/Icons';
 import { useAppDispatch } from '../../store/hooks/hooks';
 
 const MoviePage = () => {
@@ -83,7 +83,7 @@ const MoviePage = () => {
 	return (
 		<StyledMoviePage>
 			<StyledButtonClose onClick={handleBack}>
-				<TrashIcon />
+				<BackIcon />
 			</StyledButtonClose>
 
 			<StyledAsideMovie>
