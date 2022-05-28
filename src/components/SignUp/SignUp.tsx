@@ -9,28 +9,75 @@ import {
 	StyledTextSignUp,
 	StyledTitle,
 } from './styles';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from 'firebase/auth';
 import { setUser } from '../../store/slices/userReducer';
 import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import { useAppDispatch } from '../../store/hooks/hooks';
+import { useState } from 'react';
+import ModalSuccess from '../Modal/ModalSuccess';
+import ModalError from '../ModalError/ModalError';
 
 const SignUp = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const { register, handleSubmit } = useForm<IInputData>();
 
+	const [isDisable, setIsDisable] = useState(false);
+	const [isDisableError, setIsDisableError] = useState(false);
+
 	const onSubmit: SubmitHandler<IInputData> = (data) => {
 		const auth = getAuth();
 		createUserWithEmailAndPassword(auth, data.email, data.password)
-			.then((userCredential) => {
-				dispatch(setUser(userCredential.user.email));
-				navigate(routes.SIGN_IN);
+			.then(({ user }) => {
+				updateProfile(user, { displayName: data.name })
+					.then(() => {
+						setIsDisable(true);
+						dispatch(setUser(user));
+						setTimeout(() => {
+							setIsDisable(false);
+							navigate(routes.SIGN_IN);
+						}, 2000);
+					}).catch((error) => {
+						setIsDisableError(true);
+						setTimeout(() => {
+							setIsDisableError(false);
+						}, 2000);
+						
+						// An error occurred
+						// ...
+					});
+
+				// sendEmailVerification(user)
+				// 	.then(() => {
+
+						
+				// 	  // Email verification sent!
+				// 	  // ...
+
+				// 	  console.log('письмо отпрвлено');
+					  
+				// 	})
+				// 	.catch((error) => {
+				// 		console.log(error.message);
+				// 		setIsDisableError(true);
+
+				// 		setTimeout(() => {
+				// 			setIsDisableError(false);
+							
+				// 		}, 2000);
+						
+				// 		// An error occurred
+				// 		// ...
+				// 	});
+					
 			})
 			.catch(console.error);
 	};
 
-	return (
+	return (<>
+	{(isDisableError) && <ModalError/>}
+		{(isDisable) ? <ModalSuccess /> :
 		<StyledSignUpForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledTitle>Sign Up</StyledTitle>
 			<Input
@@ -72,7 +119,8 @@ const SignUp = () => {
 					<StyledTextSignUp>Sign In</StyledTextSignUp>
 				</Link>
 			</StyledText>
-		</StyledSignUpForm>
+		</StyledSignUpForm>}
+		</>
 	);
 };
 
