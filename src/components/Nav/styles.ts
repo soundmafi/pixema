@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { media } from '../../ui/media';
@@ -11,7 +11,6 @@ export const StyledNav = styled.nav`
 	${media.TABLET} {
 		grid-row-gap: 10px;
 	}
-	
 `;
 
 export const StyledText = styled.p`
@@ -19,7 +18,7 @@ export const StyledText = styled.p`
 	margin-left: 10px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)<{ isActive: boolean }>`
 	display: flex;
 	align-items: center;
 
@@ -29,20 +28,20 @@ export const StyledLink = styled(Link)`
 	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
 
-	border: 2px solid ${Colors.BG_GRAPHITE};
+	border: ${({ isActive }) => {
+		return isActive ? `2px solid ${Colors.PRIMARY}` : `2px solid ${Colors.BG_GRAPHITE}`;
+	}};
 	border-radius: 10px;
 
 	transition: 0.3s;
-	
+
 	&:hover {
 		background-color: #353535;
-		box-shadow: 0px 2px 9px 0px rgb(192, 192, 192 , 0.17);
+		box-shadow: 0px 2px 9px 0px rgb(192, 192, 192, 0.17);
 	}
 
-	&:active{
+	&:active {
 		box-shadow: 0px 2px 10px 2px rgb(192, 192, 192, 0.2);
-		background-color: #434343;
+		background-color:  #353535;
 	}
-
-
 `;
