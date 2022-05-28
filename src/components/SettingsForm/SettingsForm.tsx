@@ -1,4 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { getUser } from '../../store/selectors/userSelectors';
 import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import Switch from '../Switcher/Switcher';
@@ -9,21 +11,56 @@ import {
 	StyledButtonsContainer,
 	StyledContainer,
 	StyledForm,
-	StyledPasswordContainer,
 	StyledText,
 	StyledThemeName,
 	StyledTitle,
 } from './styles';
 
+import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
+import { useState } from 'react';
+import ModalSuccess from '../Modal/ModalSuccess';
+
 const Settings = () => {
 	const { register, handleSubmit } = useForm<IInputData>();
+	const user = useAppSelector(getUser);
+	const auth = getAuth();
+	const dispatch = useAppDispatch();
+
+	const [currentUser, setCurrentUser] = useState(user)
+	const [isDisable, setIsDisable] = useState(false);
 
 	const onSubmit: SubmitHandler<IInputData> = (data) => {
-		console.log(data);
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				updateProfile(user, {
+					displayName: data.name,
+				})
+				.then(()=>{
+					setIsDisable(true);
+						setTimeout(() => {
+							setIsDisable(false);
+						}, 2000);
+					
+					console.log('всё выполнилось')}
+				)
+				.catch((error) => {
+					setIsDisable(true);
+						setTimeout(() => {
+							setIsDisable(false);
+						}, 2000);
+					// An error occurred
+					// ...
+				});
+			} else {
+				// User is signed out
+				// ...
+			}
+		});
 	};
 
 	return (
 		<StyledForm onSubmit={handleSubmit(onSubmit)}>
+			{isDisable && <ModalSuccess/>}
 			<StyledBlockContainer>
 				<StyledTitle>Profile</StyledTitle>
 
@@ -34,7 +71,6 @@ const Settings = () => {
 						placeholder="Your Name"
 						keyData="name"
 						register={register}
-						required
 					/>
 					<Input
 						inputName="Email"
@@ -42,12 +78,14 @@ const Settings = () => {
 						placeholder="Your email"
 						keyData="email"
 						register={register}
-						required
 					/>
 				</StyledContainer>
 			</StyledBlockContainer>
 
 			<StyledBlockContainer>
+			</StyledBlockContainer>
+
+			{/* <StyledBlockContainer>
 				<StyledTitle>Password</StyledTitle>
 
 				<StyledContainer>
@@ -78,7 +116,7 @@ const Settings = () => {
 						/>
 					</StyledPasswordContainer>
 				</StyledContainer>
-			</StyledBlockContainer>
+			</StyledBlockContainer> */}
 
 			<StyledBlockContainer>
 				<StyledTitle>Color Mode</StyledTitle>
