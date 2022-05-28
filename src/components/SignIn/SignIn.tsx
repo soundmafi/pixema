@@ -25,10 +25,8 @@ const SignIn = () => {
 	const onSubmit: SubmitHandler<IInputData> = ({ email, password }) => {
 		const auth = getAuth();
 		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-					console.log(userCredential.user);
-
-				dispatch(setUser(userCredential.user));
+			.then(({ user }) => {
+				dispatch(setUser({ user }));
 				navigate(routes.HOME);
 			})
 			.catch((error) => {
