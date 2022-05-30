@@ -10,6 +10,7 @@ import { ReactComponent as FavoriteIcon } from './favorites.svg';
 import { ReactComponent as HomeIcon } from './home.svg';
 import { ReactComponent as MenuMobileIcon } from './menu-mobile.svg';
 import { ReactComponent as BackIcon } from './back.svg';
+import { ReactComponent as SearchIcon } from './search.svg';
 
 export {
 	TrashIcon,
@@ -23,5 +24,6 @@ export {
 	FavoriteIcon,
 	HomeIcon,
 	MenuMobileIcon,
-	BackIcon
+	BackIcon,
+	SearchIcon,
 };
