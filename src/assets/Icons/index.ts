@@ -1,6 +1,6 @@
 import { ReactComponent as TrashIcon } from './trash.svg';
 import { ReactComponent as UserOpenIcon } from './user-open.svg';
-import { ReactComponent as FilterOpenIcon } from './filter-open.svg';
+import { ReactComponent as FilterIcon } from './filter.svg';
 import { ReactComponent as RatingIMDB } from './imdb-rating.svg';
 import { ReactComponent as SettingsIcon } from './settings.svg';
 import { ReactComponent as ShareIcon } from './share.svg';
@@ -15,7 +15,7 @@ import { ReactComponent as SearchIcon } from './search.svg';
 export {
 	TrashIcon,
 	UserOpenIcon,
-	FilterOpenIcon,
+	FilterIcon,
 	RatingIMDB,
 	SettingsIcon,
 	ShareIcon,
