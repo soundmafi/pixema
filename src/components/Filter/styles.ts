@@ -4,6 +4,7 @@ import { typography } from '../../ui/typography';
 
 export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	position: absolute;
+	z-index: 100;
 	top: ${({ isDisable }) => {
 		return isDisable ? `38px` : `-600px`;
 	}};
@@ -43,6 +44,8 @@ export const StyledLine = styled.div`
 `;
 
 export const StyledContainer = styled.div`
+	position: relative;
+	z-index: 100;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 80px;
