@@ -1,12 +1,17 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './../TrendsSlider/styles.css'
+import './../TrendsSlider/styles.css';
 import { StyledCardContainer, StyledRecommendation } from './styles';
-import trendsList from './../../responseMovie.json';
+// import trendsList from './../../responseMovie.json';
 import CardTrends from '../CardTrends/CardTrends';
+import { IMovie } from '../../services/types';
 
-const TrendsSlider = () => {
+interface ITemplateFilms {
+	search: IMovie[];
+}
+
+const TrendsSlider = (Search:ITemplateFilms) => {
 	let slidersCounting = 4;
 	let slidersScroll = 3;
 
@@ -48,7 +53,7 @@ const TrendsSlider = () => {
 	return (
 		<StyledRecommendation>
 			<Slider {...sliderSettings}>
-				{trendsList.Search.map(({ title, poster, imdbID }) => (
+				{Search.search.map(({ title, poster, imdbID }) => (
 					<StyledCardContainer key={imdbID}>
 						<CardTrends key={imdbID} title={title} poster={poster} imdbID={imdbID} />
 					</StyledCardContainer>
