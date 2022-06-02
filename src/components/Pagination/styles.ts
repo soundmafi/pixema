@@ -11,17 +11,26 @@ export const StyledContainer = styled.div`
 	align-items: center;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{isActive:boolean}>`
 	padding: 2px 5px;
 	${typography.B1}
 	border: 1px solid ${Colors.BG_GRAPHITE};
 	border-radius: 10px;
+
+	background-color: ${({isActive }) => {
+		return isActive ? `${Colors.PRIMARY}` : `${Colors.CTX_WHITE}`;
+	}};
+
 `;
-export const StyledButtonNav = styled.button`
+export const StyledButtonNav = styled.button<{isActive:boolean}>`
 	padding: 2px 5px;
 	${typography.B1}
 	border: 1px solid ${Colors.BG_GRAPHITE};
 	border-radius: 10px;
+
+	background-color: ${({isActive }) => {
+		return isActive ? `${Colors.CTX_WHITE}` : `#ababab`;
+	}};
 `;
 
 export const StyledTotalPage = styled.p`
