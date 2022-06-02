@@ -11,7 +11,7 @@ type IFilterInputProps = {
 	value?: string;
 	placeholder?: string;
 	register: UseFormRegister<IFilterRequest>;
-	handleTitleValue?: (e:React.ChangeEvent<HTMLInputElement>)=>void 
+	handleValue?: (e:React.ChangeEvent<HTMLInputElement>)=>void 
 };
 
 const FilterInput = ({
@@ -21,12 +21,12 @@ const FilterInput = ({
 	placeholder,
 	register,
 	value,
-	handleTitleValue
+	handleValue
 }: IFilterInputProps) => {
 	return (
 		<StyledInputItem>
 			<StyledLabel htmlFor={inputName}>{inputName}</StyledLabel>
-			<StyledInput type={inputType} placeholder={placeholder} {...register(keyData)} value={value} onChange={handleTitleValue}/>
+			<StyledInput type={inputType} placeholder={placeholder} {...register(keyData)} value={value} onChange={handleValue}/>
 		</StyledInputItem>
 	);
 };

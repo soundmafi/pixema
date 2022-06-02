@@ -33,22 +33,24 @@ const Filter = () => {
 	// state for selected type (Movie/Series/Episode)
 	const [typeMovie, setTypeMovie] = useState<string>('Movie');
 	const [currentSearchValue, setCurrentSearchValue] = useState<string>(request.title);
+	const [currentSearchYear, setCurrentSearchYear] = useState<string>(request.year);
 
 	const isSelected = (value: string): boolean => typeMovie === value;
 	const handleTypeSort = (e: ChangeEvent<HTMLInputElement>): void => {
 		setTypeMovie(e.currentTarget.value);
 	};
-	console.log(currentSearchValue);
 
-	useEffect(() => { 
-		setCurrentSearchValue(request.title)
-	},[request.title])  
+	useEffect(() => {
+		setCurrentSearchValue(request.title);
+	}, [request.title]);
 
 	// handle inputs value and write new request
-	const onSubmit: SubmitHandler<IFilterRequest> = ({ title, year }) => {
+	const onSubmit: SubmitHandler<IFilterRequest> = (data, event) => {
+		console.log(event?.isTrusted);
+
 		const newRequest = {
-			title: title,
-			year: year,
+			title: currentSearchValue,
+			year: currentSearchYear,
 			type: typeMovie,
 			page: 1,
 		};
@@ -60,10 +62,26 @@ const Filter = () => {
 		dispatch(setStateFilterClose());
 	};
 
-	const handleTitleValue =(e:React.ChangeEvent<HTMLInputElement>) =>{
-		console.log(e.target.value);
-		setCurrentSearchValue(e.target.value)
-	}
+	const handleTitleValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCurrentSearchValue(e.target.value);
+	};
+
+	const handleCurrentSearchYear = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCurrentSearchYear(e.target.value);
+	};
+
+	const clearForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+		if (e.currentTarget.textContent === 'Clear filter') {
+			setCurrentSearchYear('');
+			setCurrentSearchValue('');
+		}
+	};
+
+	const showResutls = (e: React.MouseEvent<HTMLButtonElement>) => {
+		if (e.currentTarget.textContent === 'Show results') {
+			console.log(e.currentTarget.textContent);
+		}
+	};
 
 	return (
 		<>
@@ -81,7 +99,7 @@ const Filter = () => {
 						inputType={'text'}
 						placeholder={'Your text'}
 						register={register}
-						handleTitleValue={handleTitleValue}
+						handleValue={handleTitleValue}
 					/>
 					<FilterInput
 						keyData="year"
@@ -89,6 +107,8 @@ const Filter = () => {
 						inputType="text"
 						placeholder="Movie year"
 						register={register}
+						value={currentSearchYear}
+						handleValue={handleCurrentSearchYear}
 					/>
 
 					<StyledSortingContainer>
@@ -128,8 +148,15 @@ const Filter = () => {
 					</StyledSortingContainer>
 
 					<StyledButtonsContainer>
-						<StyledClearFilter>Clear filter</StyledClearFilter>
-						<StyledShowResult>Show results</StyledShowResult>
+						<StyledClearFilter
+							id="clear"
+							onClick={(e) => clearForm(e)}
+						>
+							Clear filter
+						</StyledClearFilter>
+						<StyledShowResult id="show" onClick={(e) => showResutls(e)}>
+							Show results
+						</StyledShowResult>
 					</StyledButtonsContainer>
 				</StyledFilterForm>
 			</StyledFilter>

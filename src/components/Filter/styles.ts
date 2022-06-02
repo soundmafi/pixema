@@ -72,12 +72,30 @@ export const StyledClearFilter = styled.button`
 	background-color: ${Colors.BG_GRAPHITE};
 
 	border-radius: 10px;
+	transition: 0.2s;
+
+	&:hover {
+		background-color: #4b4e50;
+	}
+	&:active {
+		background-color: #2e2f30;
+		box-shadow: rgb(255 255 255 / 42%) 0px 0px 6px 2px, rgb(255 255 255 / 5%) 0px 2px 4px -1px;
+	}
+
 `;
 
 export const StyledShowResult = styled(StyledClearFilter)`
 	color: ${Colors.CTX_WHITE};
 
 	background-color: ${Colors.PRIMARY};
+
+	&:hover {
+		background-color: #9685ed;
+	}
+	&:active {
+		background-color: #423295;
+		box-shadow: rgb(255 255 255 / 42%) 0px 0px 6px 2px, rgb(255 255 255 / 5%) 0px 2px 4px -1px;
+	}
 `;
 
 export const StyledButtonsContainer = styled.div`
