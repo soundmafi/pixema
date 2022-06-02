@@ -1,7 +1,9 @@
-import { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { IRequestParams } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { filterState } from '../../store/selectors/filterSelectors';
+import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';
 import { IFilterRequest } from '../../types/types';
@@ -23,16 +25,24 @@ import {
 
 const Filter = () => {
 	const { register, handleSubmit } = useForm<IFilterRequest>();
+	const request = useAppSelector(getRequestSearch);
+
 	const dispatch = useAppDispatch();
 	const { isDisable } = useAppSelector(filterState);
 
 	// state for selected type (Movie/Series/Episode)
 	const [typeMovie, setTypeMovie] = useState<string>('Movie');
+	const [currentSearchValue, setCurrentSearchValue] = useState<string>(request.title);
 
 	const isSelected = (value: string): boolean => typeMovie === value;
 	const handleTypeSort = (e: ChangeEvent<HTMLInputElement>): void => {
 		setTypeMovie(e.currentTarget.value);
 	};
+	console.log(currentSearchValue);
+
+	useEffect(() => { 
+		setCurrentSearchValue(request.title)
+	},[request.title])  
 
 	// handle inputs value and write new request
 	const onSubmit: SubmitHandler<IFilterRequest> = ({ title, year }) => {
@@ -50,6 +60,11 @@ const Filter = () => {
 		dispatch(setStateFilterClose());
 	};
 
+	const handleTitleValue =(e:React.ChangeEvent<HTMLInputElement>) =>{
+		console.log(e.target.value);
+		setCurrentSearchValue(e.target.value)
+	}
+
 	return (
 		<>
 			<StyledFilter isDisable={isDisable}>
@@ -61,10 +76,12 @@ const Filter = () => {
 				<StyledFilterForm onSubmit={handleSubmit(onSubmit)}>
 					<FilterInput
 						keyData="title"
+						value={currentSearchValue}
 						inputName="Full or short movie name"
 						inputType={'text'}
 						placeholder={'Your text'}
 						register={register}
+						handleTitleValue={handleTitleValue}
 					/>
 					<FilterInput
 						keyData="year"
