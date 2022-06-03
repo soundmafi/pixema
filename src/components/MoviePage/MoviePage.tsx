@@ -87,7 +87,7 @@ const MoviePage = () => {
 			</StyledButtonClose>
 
 			<StyledAsideMovie>
-				<MoviePoster poster={movieID.poster} />
+				<MoviePoster poster={movieID.poster} title={movieID.title}/>
 				<StyledButtonsContainer>
 					<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
 						<FavoriteIcon />

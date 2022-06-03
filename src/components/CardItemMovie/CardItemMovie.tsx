@@ -11,7 +11,7 @@ const CardItemMovie = ({ poster, title, imdbID }: IMovie) => {
 	return (
 		<StyledCardItemMovie key={imdbID}>
 			<StyledLink to={`/${imdbID}`} key={imdbID}>
-				<MoviePoster poster={poster} />
+				<MoviePoster poster={poster} title={title}/>
 				<StyledTitle>{title}</StyledTitle>
 			</StyledLink>
 		</StyledCardItemMovie>

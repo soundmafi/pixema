@@ -3,10 +3,11 @@ import { media } from '../../ui/media';
 
 interface IPoster {
 	poster: string;
+	title: string;
 }
 
-const MoviePoster = ({ poster }: IPoster) => {
-	return <StyledPoster src={poster} alt="coma" />;
+const MoviePoster = ({ poster, title }: IPoster) => {
+	return <StyledPoster src={poster} alt={title} />;
 };
 
 export default MoviePoster;
@@ -19,7 +20,7 @@ export const StyledPoster = styled.img`
 		width: 208px;
 		height: 279px;
 	}
-	
+
 	margin-bottom: 24px;
 
 	border-radius: 10px;
