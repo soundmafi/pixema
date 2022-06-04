@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../../ui/media';
-import emptyCard from './../../assets/backgrounds/card-empty.jpg';
+import emptyCard from './../../assets/Backgrounds/card-empty.jpg';
 
 interface IPoster {
 	poster: string;

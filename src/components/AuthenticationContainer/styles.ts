@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import background from './../../assets/backgrounds/registration.jpg';
+import background from './../../assets/Backgrounds/registration.jpg';
 
 export const StyledBackContainer = styled.div`
 	display: flex;
