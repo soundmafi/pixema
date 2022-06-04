@@ -5,6 +5,7 @@ import { media } from '../../ui/media';
 
 export const StyledMoviePage = styled.div`
 	grid-area: outlet;
+	position: relative;
 	display: grid;
 	justify-content: center;
 	grid-template-columns: 0.1fr 1fr;
@@ -12,10 +13,10 @@ export const StyledMoviePage = styled.div`
 	grid-template-areas:
 		'movieAside movieMain'
 		'movieAside recommendation';
-		${media.TABLET} {
-			grid-template-areas:
-		'movieAside movieMain'
-		'recommendation recommendation';
+	${media.TABLET} {
+		grid-template-areas:
+			'movieAside movieMain'
+			'recommendation recommendation';
 	}
 `;
 
@@ -119,8 +120,8 @@ export const StyledButtonShare = styled.button`
 
 export const StyledButtonClose = styled.button`
 	position: absolute;
-	left: 40px;
-	top: 120px;
+	left: 0px;
+	top: -30px;
 
 	width: 25px;
 	height: 25px;
