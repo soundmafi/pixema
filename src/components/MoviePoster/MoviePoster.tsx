@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { media } from '../../ui/media';
+import emptyCard from './../../assets/backgrounds/card-empty.jpg';
 
 interface IPoster {
 	poster: string;
@@ -7,7 +8,14 @@ interface IPoster {
 }
 
 const MoviePoster = ({ poster, title }: IPoster) => {
-	return <StyledPoster src={poster} alt={title} />;
+	let moviePoster = '';
+	if (poster !== 'N/A') {
+		moviePoster = poster;
+	} else {
+		moviePoster = emptyCard;
+	}
+
+	return <StyledPoster src={moviePoster} alt={title} />;
 };
 
 export default MoviePoster;
