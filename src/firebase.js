@@ -1,16 +1,16 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCRIVR5yl9msnZ8YOEmLuIjtqhviimO1ew",
-  authDomain: "pixema-afa24.firebaseapp.com",
-  projectId: "pixema-afa24",
-  storageBucket: "pixema-afa24.appspot.com",
-  messagingSenderId: "165907224289",
-  appId: "1:165907224289:web:91505cb9133028696249a0"
+	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+	projectId: process.env.REACT_APP_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_MSG_SND_ID,
+	appId: process.env.REACT_APP_FIREBASE_API_ID,
 };
 
 // Initialize Firebase
