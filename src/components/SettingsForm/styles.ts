@@ -45,6 +45,14 @@ export const StyledButtonSave = styled(StyledButtonCancel)`
 	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
 	color: ${Colors.CTX_WHITE};
+
+	transition: 0.3s;
+	&:hover {
+		background-color: #b5a7ff;
+	}
+	&:active {
+		background-color: #6548ff;
+	}
 `;
 
 export const StyledButtonsContainer = styled.div`
