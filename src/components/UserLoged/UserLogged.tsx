@@ -28,7 +28,7 @@ const UserLogged = () => {
 					</>
 				) : (
 					<>
-						<StyledBadge>AL</StyledBadge>
+						<StyledBadge>{user?.displayName[0]}</StyledBadge>
 						<StyledUsername>{user?.displayName}</StyledUsername>
 						<StyledOpenIcon>
 							<OpenIcon />
