@@ -18,7 +18,7 @@ export const StyledText = styled.p`
 	margin-left: 10px;
 `;
 
-export const StyledLink = styled(Link)<{ isactive: boolean }>`
+export const StyledLink = styled(Link)<{ isselected: string }>`
 	display: flex;
 	align-items: center;
 
@@ -28,8 +28,8 @@ export const StyledLink = styled(Link)<{ isactive: boolean }>`
 	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
 
-	border: ${({ isactive }) => {
-		return isactive ? `2px solid ${Colors.PRIMARY}` : `2px solid ${Colors.BG_GRAPHITE}`;
+	border: ${({ isselected }) => {
+		return (isselected ==="true") ? `2px solid ${Colors.PRIMARY}` : `2px solid ${Colors.BG_GRAPHITE}`;
 	}};
 	border-radius: 10px;
 

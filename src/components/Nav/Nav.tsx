@@ -16,12 +16,12 @@ const Nav = () => {
 
 	return (
 		<StyledNav>
-			<StyledLink to={routes.HOME} onClick={handleLink} isactive={activeLink === 'Home'}>
+			<StyledLink to={routes.HOME} onClick={handleLink} isselected={(activeLink === 'Home')?"true":"false"}>
 				<HomeIcon />
 				<StyledText>Home</StyledText>
 			</StyledLink>
 
-			<StyledLink to={routes.TRENDS} onClick={handleLink} isactive={activeLink === 'Trends'}>
+			<StyledLink to={routes.TRENDS} onClick={handleLink} isselected={(activeLink === 'Trends')?"true":"false"}>
 				<TrendsIcon />
 				<StyledText>Trends</StyledText>
 			</StyledLink>
@@ -30,7 +30,7 @@ const Nav = () => {
 					<StyledLink
 						to={routes.FAVORITES}
 						onClick={handleLink}
-						isactive={activeLink === 'Favorites'}
+						isselected={(activeLink === 'Favorites')?"true":"false"}
 					>
 						<FavoriteIcon />
 						<StyledText>Favorites</StyledText>
@@ -39,7 +39,7 @@ const Nav = () => {
 					<StyledLink
 						to={routes.SETTINGS}
 						onClick={handleLink}
-						isactive={activeLink === 'Settings'}
+						isselected={(activeLink === 'Settings')?"true":"false"}
 					>
 						<SettingsIcon />
 						<StyledText>Settings</StyledText>
