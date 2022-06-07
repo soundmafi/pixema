@@ -30,6 +30,11 @@ const Settings = () => {
 	const [isDisable, setIsDisable] = useState(false);
 
 	const onSubmit: SubmitHandler<IInputData> = (data) => {
+
+		if (data.name !==""){
+
+			console.log('да!');
+			
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				updateProfile(user, {
@@ -56,6 +61,10 @@ const Settings = () => {
 				// ...
 			}
 		});
+	}else{
+		console.log('нет');
+		
+	}
 	};
 
 	return (
