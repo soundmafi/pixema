@@ -16,7 +16,6 @@ import {
 	StyledButtonClose,
 	StyledButtonFavorite,
 	StyledButtonsContainer,
-	StyledButtonShare,
 	StyledGenre,
 	StyledInfoContainer,
 	StyledMovieMain,
@@ -26,7 +25,7 @@ import {
 	StyledValue,
 } from './styles';
 import { RootStore } from '../../store/store';
-import { FavoriteIcon, ShareIcon, RatingIMDB, BackIcon } from '../../assets/Icons';
+import { FavoriteIcon, RatingIMDB, BackIcon } from '../../assets/Icons';
 import { useAppDispatch } from '../../store/hooks/hooks';
 
 const MoviePage = () => {
@@ -68,16 +67,17 @@ const MoviePage = () => {
 	const isFavorite = favorites.filter(({ imdbID }) => imdbID === movieID.imdbID).length > 0;
 
 	const handleMovie = () => {
-		isFavorite? dispatch(unsetFavorite(movieID.imdbID)) :
-			dispatch(
-				setFavorite({
-					title: movieID.title,
-					imdbID: movieID.imdbID,
-					year: movieID.year,
-					poster: movieID.poster,
-					type: movieID.type,
-				})
-			);
+		isFavorite
+			? dispatch(unsetFavorite(movieID.imdbID))
+			: dispatch(
+					setFavorite({
+						title: movieID.title,
+						imdbID: movieID.imdbID,
+						year: movieID.year,
+						poster: movieID.poster,
+						type: movieID.type,
+					})
+			  );
 	};
 
 	return (
@@ -87,14 +87,11 @@ const MoviePage = () => {
 			</StyledButtonClose>
 
 			<StyledAsideMovie>
-				<MoviePoster poster={movieID.poster} title={movieID.title}/>
+				<MoviePoster poster={movieID.poster} title={movieID.title} />
 				<StyledButtonsContainer>
 					<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
 						<FavoriteIcon />
 					</StyledButtonFavorite>
-					<StyledButtonShare>
-						<ShareIcon />
-					</StyledButtonShare>
 				</StyledButtonsContainer>
 			</StyledAsideMovie>
 			<StyledMovieMain>

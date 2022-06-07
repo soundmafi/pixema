@@ -87,7 +87,7 @@ export const StyledValue = styled.p``;
 
 export const StyledButtonsContainer = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	column-gap: 1px;
 `;
 export const StyledButtonFavorite = styled.button<{ isFavorite: boolean }>`
@@ -96,7 +96,7 @@ export const StyledButtonFavorite = styled.button<{ isFavorite: boolean }>`
 	background-color: ${({ isFavorite }) => {
 		return isFavorite ? `${Colors.ORANGE}` : `${Colors.BG_GRAPHITE}`;
 	}};
-	border-radius: 10px 0 0 10px;
+	border-radius: 10px;
 
 	&:hover {
 		background-color: #2c3439;
