@@ -31,9 +31,9 @@ const List = () => {
 	// const response = useAppSelector(getMovies2Response);
 	// const errorExtra = useAppSelector(getMovies2Error);
 	// const statusExtra = useAppSelector(getMovies2Status);
+	// dispatch(fetchMovies())
 
 	useEffect(() => {
-		// dispatch(fetchMovies())
 		movieApi.getMoviesByParams(request).then((movies) => {
 			console.log(movies);
 

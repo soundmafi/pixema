@@ -26,22 +26,23 @@ class MovieServices {
 		return data;
 	}
 
-	// public async getMovieInfoData(body = {s: 'night story'}){
-	// 	const {data} = await this.api.get<IMoviesApiResponse>('/', {params: body})
-	// 	return data;
-	// }
-
-	public async getMovieInfoData(params: IRequestParams) {
-		const body = {
-			s: params.title,
-			type: params.type,
-			y: params.year,
-			page: params.page,
-		};
-
-		const data = await this.api.get<IExtraResponseApi>('/', { params: body });
+	public async getMovieInfoData(){
+		const body = {s: 'night story', y: '2015'}
+		const data = await this.api.get<IExtraResponseApi>('/', {params: body})
 		return data;
 	}
+
+	// public async getMovieInfoData(params: IRequestParams) {
+	// 	const body = {
+	// 		s: params.title,
+	// 		type: params.type,
+	// 		y: params.year,
+	// 		page: params.page,
+	// 	};
+
+	// 	const data = await this.api.get<IExtraResponseApi>('/', { params: body });
+	// 	return data;
+	// }
 
 	// public async getMovieInfoData(params:IRequestParams){
 	// 	const body = {

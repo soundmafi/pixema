@@ -33,9 +33,9 @@ const initialState: IRes = {
 
 
 
-export const fetchMovies = createAsyncThunk<any>('movies-list/fetchMovies', async () => {
+export const fetchMovies = createAsyncThunk<any,AnyAction>('movies-list/fetchMovies', async () => {
 	const requestCurrent = useAppSelector(getRequestSearch);
-	const newResponse = await movieApi.getMovieInfoData(requestCurrent);
+	const newResponse = await movieApi.getMovieInfoData();
 	return newResponse
 });
 
