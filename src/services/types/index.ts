@@ -82,20 +82,18 @@ export interface IMovieDetails {
 	production: string;
 	response: boolean;
 	type: string;
-	// awards: string;
 }
-
 
 export interface IUserResponse {
 	accessToken: string;
 	auth: {};
-	displayName:  string;
-	email:  string;
+	displayName: string;
+	email: string;
 	emailVerified: boolean;
 	isAnonymous: boolean;
 	metadata: {};
 	phoneNumber: null | string;
-	photoURL:  string;
+	photoURL: string;
 	proactiveRefresh: {};
 	providerData: [{}];
 	providerId: null | string;
@@ -104,4 +102,24 @@ export interface IUserResponse {
 	stsTokenManager: {};
 	tenantId: null | string;
 	uid: null | string;
+}
+
+export interface IExtraDataSuccesResponseApi {
+		Search: IMovie[];
+		totalResults: string;
+		Response: string;
+}
+
+export interface IExtraDataErrorResponseApi {
+		Error: string;
+		Response: string;
+}
+
+export interface IExtraResponseApi {
+	data: IExtraDataSuccesResponseApi| IExtraDataErrorResponseApi ;
+	status: any;
+	statusText: string;
+	headers: {};
+	config: {};
+	request: {};
 }
