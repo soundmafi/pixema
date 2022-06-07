@@ -1,7 +1,7 @@
 # Pixema
 
 <a href = 'https://soundmafi.github.io/pixema/'>
-  <img src="./Preview.jpg" />
+  <img src="./interface_preview.png" />
 </a>
 
 Pixema is a movie platform for get more details about your favorites movies. Users have opportunity for search by title movie, types or year
