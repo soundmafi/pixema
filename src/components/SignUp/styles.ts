@@ -44,6 +44,13 @@ export const StyledButton = styled.button`
 	background-color: ${Colors.PRIMARY};
 	border-radius: 10px;
 	color: ${Colors.CTX_WHITE};
+	transition: 0.2s;
+	&:hover {
+		background-color: var(--bgBtnHover);
+	}
+	&:active {
+		background-color: var(--bgBtnActive);
+	}
 `;
 export const StyledText = styled.p`
 	margin: 0 auto;

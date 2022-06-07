@@ -13,6 +13,7 @@ export const StyledModal = styled.div`
 	margin: 0 auto;
 
 	background-color: ${Colors.BG_GRAPHITE};
+	color: ${Colors.CTX_WHITE};
 	
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,

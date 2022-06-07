@@ -281,4 +281,8 @@ body {
 	background-color: var(--bgColor);
 	color: var(--txtColor);
 }
+
+a{
+    color: var(--txtColor);
+}
 `;

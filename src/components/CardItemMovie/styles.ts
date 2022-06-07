@@ -9,10 +9,11 @@ export const StyledCardItemMovie = styled.li`
 
 export const StyledTitle = styled.p`
 	${typography.S2}
+	
 `;
 export const StyledLink = styled(Link)`
 	${typography.S2}
 
-	color: ${Colors.CTX_WHITE};
+	color: var(--txtColor);
 	text-decoration: none;
 `;

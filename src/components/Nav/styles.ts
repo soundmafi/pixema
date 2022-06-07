@@ -25,7 +25,6 @@ export const StyledLink = styled(Link)<{ isselected: string }>`
 	padding: 5px 45px 5px 10px;
 	width: 100%;
 
-	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
 
 	border: ${({ isselected }) => {
@@ -36,7 +35,7 @@ export const StyledLink = styled(Link)<{ isselected: string }>`
 	transition: 0.3s;
 
 	&:hover {
-		background-color: #353535;
+		background-color: var(--bgHover);
 		box-shadow: 0px 2px 9px 0px rgb(192, 192, 192, 0.17);
 	}
 

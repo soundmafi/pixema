@@ -21,8 +21,8 @@ export const StyledTitle = styled.p`
 export const StyledLink = styled(Link)`
 	${typography.S2}
 
-	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
+	color: var(--txtColor);
 `;
 
 export const StyledPoster = styled.img`

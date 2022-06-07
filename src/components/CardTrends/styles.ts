@@ -21,7 +21,7 @@ export const StyledTitle = styled.p`
 export const StyledLink = styled(Link)`
 	${typography.S2}
 
-	color: ${Colors.CTX_WHITE};
+	color: var(--txtColor);
 	text-decoration: none;
 `;
 

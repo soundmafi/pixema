@@ -9,6 +9,11 @@ export const StyledUserLogged = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
+	border: 1px solid ${Colors.BG_BLACK};
+	border-radius: 10px;
+
+	padding: 5px 10px;
+
 	cursor: pointer;
 	
 	${media.TABLET} {
@@ -20,8 +25,8 @@ export const StyledBadge = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	width: 56px;
-	height: 56px;
+	width: 50px;
+	height: 50px;
 
 	${typography.H3}
 
@@ -32,6 +37,10 @@ export const StyledBadge = styled.div`
 
 export const StyledUsername = styled.p`
 	${typography.S3}
+	background-color: ${Colors.PRIMARY};
+	border-radius: 10px;
+	padding: 10px 20px;
+	color: ${Colors.CTX_WHITE};
 `;
 
 export const StyledOpenIcon = styled.div``;
