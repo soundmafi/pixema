@@ -148,13 +148,13 @@ const Filter = () => {
 					</StyledSortingContainer>
 
 					<StyledButtonsContainer>
-						<StyledClearFilter
+						<StyledClearFilter type='button'
 							id="clear"
 							onClick={(e) => clearForm(e)}
 						>
 							Clear filter
 						</StyledClearFilter>
-						<StyledShowResult id="show" onClick={(e) => showResutls(e)}>
+						<StyledShowResult type='submit' id="show" onClick={(e) => showResutls(e)}>
 							Show results
 						</StyledShowResult>
 					</StyledButtonsContainer>
