@@ -19,6 +19,7 @@ import { fetchMovies, IRes } from '../../store/slices/moviesReducer2';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ModalError from '../ModalError/ModalError';
+import ModalNotFound from '../ModalNotFound/ModalNotFound';
 import Pagination from '../Pagination/Pagination';
 import { ListContainer, StyledFilter, StyledList } from './styles';
 
@@ -84,7 +85,7 @@ const List = () => {
 
 export default List;
 
-const StyledError = styled(ModalError)`
+const StyledError = styled(ModalNotFound)`
 	/* display: flex; */
 	margin: 0 auto;
 `;
