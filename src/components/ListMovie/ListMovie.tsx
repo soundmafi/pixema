@@ -1,26 +1,51 @@
-import { useEffect } from 'react';
+import { type } from 'os';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FilterIcon } from '../../assets/Icons';
 import { transformMovies } from '../../services/mappers/movies';
 import { movieApi } from '../../services/movieApi';
+import { IExtraResponseApi, IMovie } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import {
+	getMovies2Error,
+	getMovies2Response,
+	getMovies2Status,
+} from '../../store/selectors/moviesSelector2';
 import { getMoviesResponse } from '../../store/selectors/moviesSelectors';
+import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setStateFilterOpen } from '../../store/slices/filterStateReducer';
 import { setMovies } from '../../store/slices/moviesReducer';
-import { RootStore } from '../../store/store';
+import { fetchMovies, IRes } from '../../store/slices/moviesReducer2';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ModalError from '../ModalError/ModalError';
 import Pagination from '../Pagination/Pagination';
 import { ListContainer, StyledFilter, StyledList } from './styles';
 
 const List = () => {
-	const request = useAppSelector(({ requestSearch }: RootStore) => requestSearch);
+	const request = useAppSelector(getRequestSearch);
 	const moviesResponse = useAppSelector(getMoviesResponse);
 	const dispatch = useAppDispatch();
+	const [isResponse, setIsResponse] = useState(true);
+
+	// const response = useAppSelector(getMovies2Response);
+	// const errorExtra = useAppSelector(getMovies2Error);
+	// const statusExtra = useAppSelector(getMovies2Status);
 
 	useEffect(() => {
+		// dispatch(fetchMovies())
 		movieApi.getMoviesByParams(request).then((movies) => {
-			dispatch(setMovies(transformMovies(movies)));
+			console.log(movies);
+
+			if (movies.Response === 'True') {
+				console.log('записать');
+				setIsResponse(true);
+
+				dispatch(setMovies(transformMovies(movies)));
+			} else {
+				console.log('не записывать');
+				setIsResponse(false);
+			}
 		});
 	}, [request]);
 
@@ -31,26 +56,28 @@ const List = () => {
 
 	return (
 		<ListContainer>
-			<StyledFilter onClick={handleOpen}>
-				<FilterIcon />
-			</StyledFilter>
-			<Pagination />
-			<StyledList>
-				{moviesResponse.results.length > 0 ? (
-					moviesResponse.results.map(({ title, poster, imdbID }) => {
-						return (
-							<CardItemMovie
-								key={imdbID}
-								title={title}
-								poster={poster}
-								imdbID={imdbID}
-							/>
-						);
-					})
-				) : (
-					<StyledError />
-				)}
-			</StyledList>
+			{isResponse ? (
+				<>
+					<StyledFilter onClick={handleOpen}>
+						<FilterIcon />
+					</StyledFilter>
+					<Pagination />
+					<StyledList>
+						{moviesResponse.results.map(({ title, poster, imdbID }) => {
+							return (
+								<CardItemMovie
+									key={imdbID}
+									title={title}
+									poster={poster}
+									imdbID={imdbID}
+								/>
+							);
+						})}
+					</StyledList>
+				</>
+			) : (
+				<StyledError />
+			)}
 		</ListContainer>
 	);
 };
