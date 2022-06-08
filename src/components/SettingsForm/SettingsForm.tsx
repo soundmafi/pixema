@@ -19,6 +19,7 @@ import {
 import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import ModalSuccess from '../Modal/ModalSuccess';
+import { setUser } from '../../store/slices/userReducer';
 
 const Settings = () => {
 	const { register, handleSubmit } = useForm<IInputData>();
@@ -37,6 +38,7 @@ const Settings = () => {
 			
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
+				// dispatch(setUser({...user, name: data.name}))
 				updateProfile(user, {
 					displayName: data.name,
 				})
@@ -45,8 +47,9 @@ const Settings = () => {
 						setTimeout(() => {
 							setIsDisable(false);
 						}, 2000);
-					
-					console.log('всё выполнилось')}
+						dispatch(setUser({user, name: data.name}))
+					console.log('всё выполнилось');
+				}
 				)
 				.catch((error) => {
 					setIsDisable(true);
