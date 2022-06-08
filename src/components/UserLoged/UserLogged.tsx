@@ -11,9 +11,17 @@ import { Link } from 'react-router-dom';
 import { routes } from '../../routes/routes';
 import { useAppSelector } from '../../store/hooks/hooks';
 import { getUser } from '../../store/selectors/userSelectors';
+import UserBar from '../UserBar/UserBar';
+import { useState } from 'react';
 
 const UserLogged = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleToggle = () => {
+		!isOpen ? setIsOpen(true) : setIsOpen(false);
+	};
 	const { isAuth, user } = useAppSelector(getUser);
+
 	return (
 		// <StyledLink to={routes.SETTINGS}>
 			<StyledUserLogged>
@@ -30,9 +38,10 @@ const UserLogged = () => {
 					<>
 						<StyledBadge>{user?.displayName[0]}</StyledBadge>
 						<StyledUsername>{user?.displayName}</StyledUsername>
-						<StyledOpenIcon>
+						<StyledOpenIcon onClick={handleToggle} isOpen={isOpen}>
 							<OpenIcon />
 						</StyledOpenIcon>
+						<UserBar isOpen={isOpen} user ={user} />
 					</>
 				)}
 			</StyledUserLogged>
