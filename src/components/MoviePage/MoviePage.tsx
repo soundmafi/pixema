@@ -26,7 +26,8 @@ import {
 } from './styles';
 import { RootStore } from '../../store/store';
 import { FavoriteIcon, RatingIMDB, BackIcon } from '../../assets/Icons';
-import { useAppDispatch } from '../../store/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { getUser } from '../../store/selectors/userSelectors';
 
 const MoviePage = () => {
 	const initialMovieDetail: IMovieDetails = {
@@ -55,6 +56,7 @@ const MoviePage = () => {
 	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const navigate = useNavigate();
+	const { isAuth } = useAppSelector(getUser);
 
 	const handleBack = () => {
 		navigate(-1);
@@ -88,11 +90,12 @@ const MoviePage = () => {
 
 			<StyledAsideMovie>
 				<MoviePoster poster={movieID.poster} title={movieID.title} />
+				{isAuth && (
 				<StyledButtonsContainer>
 					<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
 						<FavoriteIcon />
 					</StyledButtonFavorite>
-				</StyledButtonsContainer>
+				</StyledButtonsContainer>)}
 			</StyledAsideMovie>
 			<StyledMovieMain>
 				<StyledGenre>{movieID.genre}</StyledGenre>
