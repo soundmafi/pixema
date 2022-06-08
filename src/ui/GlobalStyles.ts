@@ -280,6 +280,7 @@ body {
 	font-family: 'Exo 2', sans-serif;
 	background-color: var(--bgColor);
 	color: var(--txtColor);
+    overflow-x: hidden;
 }
 
 a{
