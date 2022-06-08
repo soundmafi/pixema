@@ -30,7 +30,8 @@ const SignUp = () => {
 		const auth = getAuth();
 		createUserWithEmailAndPassword(auth, data.email, data.password)
 			.then(({ user }) => {
-				updateProfile(user, { displayName: data.name })
+				updateProfile(user, { displayName: data.name,
+					photoURL: 'https://upload.wikimedia.org/wikipedia/ru/4/42/Kenny-sp.jpg'})
 					.then(() => {
 						setIsDisable(true);
 						dispatch(setUser(user));
