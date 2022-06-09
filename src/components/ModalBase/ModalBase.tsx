@@ -1,9 +1,14 @@
+import { ModalText } from '../../types/modalText';
 import { StyledModal, Text } from './styles';
 
-const ModalBase = (message: string) => {
+interface IModalMessage {
+	message: ModalText;
+}
+
+const ModalBase = (message: IModalMessage) => {
 	return (
 		<StyledModal>
-			<Text>{message}</Text>
+			<Text>{message.message}</Text>
 		</StyledModal>
 	);
 };
