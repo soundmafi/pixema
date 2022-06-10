@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
+import ModalBase from '../ModalBase/ModalBase';
 
 export const StyledSignUpForm = styled.form`
 	z-index: 10;
