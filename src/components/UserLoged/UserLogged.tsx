@@ -35,7 +35,7 @@ const UserLogged = () => {
 			) : (
 				<>
 					<StyledBadge>{user?.displayName[0]}</StyledBadge>
-					<StyledUsername>{user?.displayName}</StyledUsername>
+					<StyledUsername onClick={handleToggle}>{user?.displayName}</StyledUsername>
 					<StyledOpenIcon onClick={handleToggle} isOpen={isOpen}>
 						<OpenIcon />
 					</StyledOpenIcon>

@@ -39,7 +39,7 @@ const userSlice = createSlice({
 		},
 		unsetUser: (state) => {
 			state.isAuth = false;
-			
+			state.user = initialState.user;
 		},
 	},
 });

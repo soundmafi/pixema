@@ -12,8 +12,6 @@ export const StyledUserLogged = styled.div`
 
 	border-radius: 10px;
 
-	cursor: pointer;
-
 	${media.TABLET} {
 		margin-bottom: 15px;
 	}
@@ -37,12 +35,15 @@ export const StyledUsername = styled.p`
 	${typography.S3}
 	padding: 10px 20px;
 	color: ${Colors.CTX_WHITE};
+	cursor: pointer;
 `;
 
 export const StyledOpenIcon = styled.div<{ isOpen: boolean }>`
 	padding: 8px 10px;
 	border-radius: 10px;
 	background-color: ${Colors.BG_GRAPHITE};
+
+	cursor: pointer;
 
 	transform: ${({ isOpen }) => {
 		return isOpen ? `rotate(180deg)` : `rotate(0deg)`;
