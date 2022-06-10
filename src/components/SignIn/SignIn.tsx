@@ -16,11 +16,22 @@ import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import { setUser } from '../../store/slices/userReducer';
 import { useAppDispatch } from '../../store/hooks/hooks';
+import { ModalText } from '../../types/modalText';
+import { useState } from 'react';
+import ModalBase from '../ModalBase/ModalBase';
 
 const SignIn = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<IInputData>();
+	const [textErrorState, setTexErrorState] = useState<ModalText>(ModalText.SUCCES_SIGN_IN);
+	const [isDisableError, setIsDisableError] = useState(false);
+
+	const getErrorText = (responseText: string) => {
+		if (responseText === 'auth/wrong-password') {
+			setTexErrorState(ModalText.ERROR_LOGIN);
+		}
+	};
 
 	const onSubmit: SubmitHandler<IInputData> = ({ email, password }) => {
 		const auth = getAuth();
@@ -30,12 +41,14 @@ const SignIn = () => {
 				navigate(routes.HOME);
 			})
 			.catch((error) => {
-				console.log('Не правильный логин или пароль');
+				getErrorText(error.code);
+				setIsDisableError(true);
 			});
 	};
 	return (
 		<StyledSignForm onSubmit={handleSubmit(onSubmit)}>
 			<StyledTitle>Sign In</StyledTitle>
+			{isDisableError && <ModalBase message={textErrorState} />}
 			<Input
 				keyData="email"
 				inputName="Email"
