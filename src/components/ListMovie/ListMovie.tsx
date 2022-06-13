@@ -1,4 +1,3 @@
-import { type } from 'os';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FilterIcon } from '../../assets/Icons';
@@ -18,7 +17,6 @@ import { setMovies } from '../../store/slices/moviesReducer';
 import { fetchMovies, IRes } from '../../store/slices/moviesReducer2';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-import ModalError from '../ModalError/ModalError';
 import ModalNotFound from '../ModalNotFound/ModalNotFound';
 import Pagination from '../Pagination/Pagination';
 import { ListContainer, StyledFilter, StyledList } from './styles';
@@ -36,15 +34,10 @@ const List = () => {
 
 	useEffect(() => {
 		movieApi.getMoviesByParams(request).then((movies) => {
-			console.log(movies);
-
 			if (movies.Response === 'True') {
-				console.log('записать');
 				setIsResponse(true);
-
 				dispatch(setMovies(transformMovies(movies)));
 			} else {
-				console.log('не записывать');
 				setIsResponse(false);
 			}
 		});
