@@ -68,15 +68,10 @@ const SignIn = () => {
 				register={register}
 				required
 			/>
-			<StyledRestorePasword>
-				<Link to={routes.RESET_PASSWORD}>Forgot password?</Link>
-			</StyledRestorePasword>
+			<Link to={routes.RESET_PASSWORD}>Forgot password?</Link>
 			<StyledButton type="submit">Sign in</StyledButton>
 			<StyledText>
-				Don’t have an account?{' '}
-				<Link to={routes.SIGN_UP}>
-					<StyledTextSignUp>Sign Up</StyledTextSignUp>
-				</Link>
+				Don’t have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
 			</StyledText>
 		</StyledSignForm>
 	);

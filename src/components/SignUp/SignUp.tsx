@@ -138,7 +138,7 @@ const SignUp = () => {
 					<StyledText>
 						Already have an account?{' '}
 						<Link to={routes.SIGN_IN}>
-							<StyledTextSignUp>Sign In</StyledTextSignUp>
+							Sign In
 						</Link>
 					</StyledText>
 				</StyledSignUpForm>
