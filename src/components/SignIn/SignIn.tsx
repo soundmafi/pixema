@@ -29,7 +29,10 @@ const SignIn = () => {
 
 	const getErrorText = (responseText: string) => {
 		if (responseText === 'auth/wrong-password') {
-			setTexErrorState(ModalText.ERROR_LOGIN);
+			setTexErrorState(ModalText.ERROR_PASSWORD);
+		}
+		if (responseText === 'auth/user-not-found') {
+			setTexErrorState(ModalText.ERROR_EMAIL_NOT_FOUND);
 		}
 	};
 
