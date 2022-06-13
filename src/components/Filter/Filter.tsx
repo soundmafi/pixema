@@ -46,15 +46,15 @@ const Filter = () => {
 
 	// handle inputs value and write new request
 	const onSubmit: SubmitHandler<IFilterRequest> = (data, event) => {
-		console.log(event?.isTrusted);
-
 		const newRequest = {
 			title: currentSearchValue,
 			year: currentSearchYear,
 			type: typeMovie,
 			page: 1,
 		};
+		if (newRequest.title !== ''){
 		dispatch(setRequest(newRequest));
+		}
 	};
 
 	//	close filter btn
@@ -79,7 +79,6 @@ const Filter = () => {
 
 	const showResutls = (e: React.MouseEvent<HTMLButtonElement>) => {
 		if (e.currentTarget.textContent === 'Show results') {
-			console.log(e.currentTarget.textContent);
 		}
 	};
 

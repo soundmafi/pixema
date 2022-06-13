@@ -10,6 +10,7 @@ import { RootStore } from '../../store/store';
 import { setRequest } from '../../store/slices/requestReducer';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
+import { IMoviesApiResponse } from '../../services/types';
 
 const Search = () => {
 	const navigate = useNavigate();
@@ -31,10 +32,16 @@ const Search = () => {
 	};
 
 	useEffect(() => {
-		movieApi.getMovieTitleSearch(request).then((movies) => {
+		if (request.title !== ''){
+			
+		movieApi.getMovieTitleSearch(request).then((movies:IMoviesApiResponse) => {
+			if (movies.Response ==="True"){
 			dispatch(setMovies(transformMovies(movies)));
+			}
 		});
+	}
 	}, [newRequest]);
+	
 
 	const searchButton = (e: MouseEvent<HTMLElement>) => {
 		e.preventDefault();
