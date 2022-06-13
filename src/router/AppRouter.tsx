@@ -19,6 +19,7 @@ export const AppRouter = () => {
 		<Routes>
 			<Route path={routes.HOME} element={<MainTemplate />}>
 				<Route index element={<Home />} />
+				<Route path={routes.START} element={<Home />}/>
 				<Route path={routes.TRENDS} element={<Trends />} />
 				<Route path={routes.FAVORITES} element={<Favorites />} />
 				<Route path={routes.SETTINGS} element={<Settings />} />

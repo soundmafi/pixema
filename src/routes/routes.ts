@@ -6,5 +6,6 @@ export enum routes{
     SIGN_IN = '/sign-in',
     SIGN_UP = '/sign-up',
     RESET_PASSWORD = '/reset-password',
-    NOT_FOUND = '*'
+    NOT_FOUND = '*',
+    START='/pixema'
 }
