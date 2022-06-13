@@ -8,7 +8,6 @@ export const StyledMoviePage = styled.div`
 	position: relative;
 	display: grid;
 	justify-content: center;
-	grid-template-columns: 0.1fr 1fr;
 	column-gap: 42px;
 	grid-template-areas:
 		'movieAside movieMain'
