@@ -51,6 +51,7 @@ export const StyledTitle = styled.h3`
 	border-bottom: 1px solid ${Colors.CTX_WHITE};
 
 	color: ${Colors.CTX_WHITE};
+	overflow: hidden;
 `;
 
 export const StyledPhoto = styled.img`
