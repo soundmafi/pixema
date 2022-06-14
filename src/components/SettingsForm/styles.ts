@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
 
 export const StyledForm = styled.form`
 	display: grid;
 	row-gap: 40px;
+	${media.TABLET}{
+		row-gap: 20px;
+
+	}
 `;
 
 export const StyledTitle = styled.h2`
@@ -17,8 +22,14 @@ export const StyledContainer = styled.div`
 	display: grid;
 	column-gap: 40px;
 	grid-template-columns: 1fr 1fr;
+	@media (max-width: 830px) {
+		grid-template-columns: 1fr;
+	}
 
 	padding: 40px;
+	${media.MOBILE}{
+		padding: 20px;
+	}
 
 	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
@@ -62,6 +73,11 @@ export const StyledButtonsContainer = styled.div`
 
 	width: 50%;
 	margin-left: auto;
+
+	${media.MOBILE}{
+		margin: 0 auto;
+
+	}
 `;
 
 export const StyledThemeName = styled.h3`

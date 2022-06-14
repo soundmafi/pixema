@@ -92,11 +92,12 @@ const MoviePage = () => {
 			<StyledAsideMovie>
 				<MoviePoster poster={movieID.poster} title={movieID.title} />
 				{isAuth && (
-				<StyledButtonsContainer>
-					<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
-						<FavoriteIcon />
-					</StyledButtonFavorite>
-				</StyledButtonsContainer>)}
+					<StyledButtonsContainer>
+						<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
+							<FavoriteIcon />
+						</StyledButtonFavorite>
+					</StyledButtonsContainer>
+				)}
 			</StyledAsideMovie>
 			<StyledMovieMain>
 				<StyledGenre>{movieID.genre}</StyledGenre>

@@ -18,26 +18,46 @@ export const StyledMoviePage = styled.div`
 			'movieAside movieMain'
 			'recommendation recommendation';
 	}
+	@media (max-width: 600px) {
+		grid-template-areas:
+			'movieAside'
+			'movieMain'
+			'recommendation';
+	}
 `;
 
 export const StyledAsideMovie = styled.div`
 	grid-area: movieAside;
+	margin: 0 auto;
 `;
 
 export const StyledMovieMain = styled.div`
 	grid-area: movieMain;
+	/* @media (max-width:600px) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	} */
 `;
 
 export const StyledRecommendation = styled.div``;
 
 export const StyledGenre = styled.div`
 	${typography.S1}
+	@media (max-width:600px) {
+		display: flex;
+		justify-content: center;
+	}
 `;
 
 export const StyledTitle = styled.h1`
 	margin-bottom: 24px;
 
 	${typography.H1}
+	@media (max-width:600px) {
+		display: flex;
+		justify-content: center;
+	}
 `;
 
 export const StyledBadge = styled.p`
@@ -50,6 +70,10 @@ export const StyledBadge = styled.p`
 	color: var(--txtColor);
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 6px;
+	@media (max-width:600px) {
+		margin: 0 auto;
+	}
+	
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`
@@ -127,6 +151,9 @@ export const StyledButtonClose = styled.button`
 	height: 25px;
 
 	background-color: ${Colors.BG_DARK};
+	@media (max-width: 600px) {
+		top: -10px;
+	}
 `;
 
 export const StyledRecommendations = styled(Recommendations)`

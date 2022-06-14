@@ -16,6 +16,17 @@ export const Authorization = styled.div`
 	margin: 0 auto;
 	padding: 40px 62px;
 
+	${media.TABLET} {
+		grid-column-gap: 30px;
+		padding: 20px;
+	}
+
+	${media.MOBILE} {
+		grid-column-gap: 20px;
+		padding: 10px;
+	}
+
+
 	&:before {
 		content: ' ';
 		display: block;
