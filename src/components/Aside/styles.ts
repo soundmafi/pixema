@@ -7,6 +7,7 @@ export const StyledAside = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 158px;
 
 	${media.TABLET} {
 		display: none;

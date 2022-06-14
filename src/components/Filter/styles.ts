@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
+import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 
 export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	position: absolute;
@@ -8,7 +10,7 @@ export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	top: ${({ isDisable }) => {
 		return isDisable ? `38px` : `-600px`;
 	}};
-	right: 10px;
+	right: 0px;
 
 	grid-template-columns: 1fr;
 
@@ -21,6 +23,10 @@ export const StyledFilter = styled.div<{ isDisable: boolean }>`
 	box-shadow: 0px 7px 11px 3px rgba(255, 255, 255, 0.48);
 
 	transition: top 0.3s ease-in-out;
+
+	${media.TABLET}{
+		padding: 15px;
+	}
 `;
 
 export const StyledFilterForm = styled.form``;
@@ -63,7 +69,18 @@ export const StyledButtonClose = styled.button`
 	margin-left: 15px;
 
 	background-color: ${Colors.BG_DARK};
+
+	${media.TABLET}{
+		right: 20px;
+	top: 15px;
+	width: 15px;
+	height: 15px;
+	}
 `;
+
+export const CloseIcon =styled(ButtonCloseIcon)`
+	width : 10px;
+`
 
 export const StyledClearFilter = styled.button`
 	padding: 15px;
@@ -80,6 +97,11 @@ export const StyledClearFilter = styled.button`
 	&:active {
 		background-color: #2e2f30;
 		box-shadow: rgb(255 255 255 / 42%) 0px 0px 6px 2px, rgb(255 255 255 / 5%) 0px 2px 4px -1px;
+	}
+
+	${media.MOBILE}{
+		padding: 10px 7px;
+		border-radius: 6px;
 	}
 
 `;
@@ -102,6 +124,10 @@ export const StyledButtonsContainer = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 40px;
+	${media.MOBILE}{
+		column-gap: 10px;
+
+	}
 `;
 
 export const StyledSortingContainer = styled.div`
@@ -110,6 +136,10 @@ export const StyledSortingContainer = styled.div`
 	column-gap: 5px;
 
 	margin-bottom: 32px;
+	${media.MOBILE}{
+		margin-bottom: 25px;
+
+	}
 
 	overflow: hidden;
 	border-radius: 10px;
@@ -139,4 +169,9 @@ export const StyledLabel = styled.label<{ htmlFor: string; typeMovie: string }>`
 	transition: 0.3s;
 
 	cursor: pointer;
+
+	${media.MOBILE}{
+		padding: 10px 5px;
+
+	}
 `;

@@ -7,7 +7,7 @@ import { typography } from '../../ui/typography';
 export const StyledUserLogged = styled.div`
 	position: relative;
 	display: flex;
-	justify-content: space-between;
+	justify-content: end;
 	align-items: center;
 
 	border-radius: 10px;
@@ -33,7 +33,7 @@ export const StyledBadge = styled.div`
 
 export const StyledUsername = styled.p`
 	${typography.S3}
-	padding: 10px 20px;
+	padding: 10px;
 	color: ${Colors.CTX_WHITE};
 	cursor: pointer;
 `;
@@ -65,4 +65,23 @@ export const StyledLink = styled(Link)`
 
 	color: ${Colors.CTX_WHITE};
 	text-decoration: none;
+`;
+
+export const ProfileContainer = styled.div`
+	display: flex;
+`;
+
+export const StyledButton = styled.button`
+	padding: 10px;
+	margin-left: 10px;
+	background-color: ${Colors.PRIMARY};
+	border-radius: 10px;
+	color: ${Colors.CTX_WHITE};
+	transition: 0.2s;
+	&:hover {
+		background-color: var(--bgBtnHover);
+	}
+	&:active {
+		background-color: var(--bgBtnActive);
+	}
 `;

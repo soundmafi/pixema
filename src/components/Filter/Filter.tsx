@@ -10,6 +10,7 @@ import { IFilterRequest } from '../../types/types';
 import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 import FilterInput from '../FilterInput/FilterInput';
 import {
+	CloseIcon,
 	StyledButtonClose,
 	StyledButtonsContainer,
 	StyledClearFilter,
@@ -86,7 +87,7 @@ const Filter = () => {
 		<>
 			<StyledFilter isDisable={isDisable}>
 				<StyledButtonClose onClick={() => handleClose()}>
-					<ButtonCloseIcon />
+					<CloseIcon />
 				</StyledButtonClose>
 				<StyledTitleFilter>Filter</StyledTitleFilter>
 				<StyledLine />

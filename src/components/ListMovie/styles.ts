@@ -6,10 +6,15 @@ export const StyledList = styled.ul`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
 	grid-gap: 10px;
+	justify-items: center;
 
 	width: 100%;
 
 	${media.TABLET} {
+		grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+	}
+
+	${media.MOBILE} {
 		grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
 	}
 `;
@@ -23,15 +28,15 @@ export const ListContainer = styled.div`
 export const StyledFilter = styled.button`
 	position: absolute;
 	top: -10px;
-    right: 10px;
+    right: 0px;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
-	height: 40px;
-	width: 40px;
-	min-width: 40px;
+	height: 38px;
+	width: 38px;
+	min-width: 38px;
 	margin-left: 10px;
 	padding: 5px;
 	align-self: center;
@@ -49,5 +54,14 @@ export const StyledFilter = styled.button`
 	&:active {
 		box-shadow: 0px 2px 10px 2px rgb(192, 192, 192, 0.2);
 		background-color: #978fc1;
+	}
+
+	${media.MOBILE} {
+		top: -5px;
+		
+	height: 30px;
+	width: 30px;
+	min-width: 30px;
+		
 	}
 `;

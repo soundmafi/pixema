@@ -11,6 +11,7 @@ import { ReactComponent as HomeIcon } from './home.svg';
 import { ReactComponent as MenuMobileIcon } from './menu-mobile.svg';
 import { ReactComponent as BackIcon } from './back.svg';
 import { ReactComponent as SearchIcon } from './search.svg';
+import { ReactComponent as NextPageIcon } from './arrow-next.svg';
 
 export {
 	TrashIcon,
@@ -26,4 +27,5 @@ export {
 	MenuMobileIcon,
 	BackIcon,
 	SearchIcon,
+	NextPageIcon
 };

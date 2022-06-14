@@ -11,8 +11,18 @@ const Header = () => {
 	return (
 		<StyledHeader>
 			<Logo />
-			<Search />
-			{size.width > 769 ? <UserLogged /> : <MobileMenu />}
+
+			{size.width > 769 ? (
+				<>
+					<Search />
+					<UserLogged />
+				</>
+			) : (
+				<>
+					<MobileMenu />
+					<Search />
+				</>
+			)}
 			<Filter />
 		</StyledHeader>
 	);

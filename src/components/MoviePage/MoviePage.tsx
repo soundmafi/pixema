@@ -21,6 +21,7 @@ import {
 	StyledMovieMain,
 	StyledMoviePage,
 	StyledPlot,
+	StyledRecommendations,
 	StyledTitle,
 	StyledValue,
 } from './styles';
@@ -130,7 +131,7 @@ const MoviePage = () => {
 					<StyledValue>{movieID.writer}</StyledValue>
 				</StyledInfoContainer>
 			</StyledMovieMain>
-			<Recommendations />
+			<StyledRecommendations />
 		</StyledMoviePage>
 	);
 };

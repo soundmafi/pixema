@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
 import { media } from '../../ui/media';
+import Recommendations from '../Recommendations/Recommendations';
 
 export const StyledMoviePage = styled.div`
 	grid-area: outlet;
@@ -11,7 +12,7 @@ export const StyledMoviePage = styled.div`
 	column-gap: 42px;
 	grid-template-areas:
 		'movieAside movieMain'
-		'movieAside recommendation';
+		'recommendation recommendation';
 	${media.TABLET} {
 		grid-template-areas:
 			'movieAside movieMain'
@@ -126,4 +127,8 @@ export const StyledButtonClose = styled.button`
 	height: 25px;
 
 	background-color: ${Colors.BG_DARK};
+`;
+
+export const StyledRecommendations = styled(Recommendations)`
+	background-color: aliceblue;
 `;

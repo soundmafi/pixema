@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
 
 export const StyledCardItemMovie = styled.li`
@@ -9,6 +9,11 @@ export const StyledCardItemMovie = styled.li`
 
 export const StyledTitle = styled.p`
 	${typography.S2}
+	width: 266px;
+
+	${media.TABLET} {
+		width: 208px;
+	}
 	
 `;
 export const StyledLink = styled(Link)`
