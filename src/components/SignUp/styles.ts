@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
-import ModalBase from '../ModalBase/ModalBase';
 
 export const StyledSignUpForm = styled.form`
+	grid-area: outlet;
 	z-index: 10;
 	display: grid;
 	row-gap: 32px;
