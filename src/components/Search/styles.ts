@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
+import { media } from '../../ui/media';
 import { typography } from '../../ui/typography';
 
 export const StyledSearch = styled.input`
 	width: 100%;
-	padding: 16px 20px;
+	padding: 10px 10px;
+
+	${media.MOBILE} {
+		padding: 12px 20px;
+	}
+
+
 
 	${typography.S1}
 
@@ -21,15 +28,19 @@ export const StyledLabel = styled.form`
 	position: relative;
 	display: flex;
 	width: 100%;
+
+	${media.TABLET} {
+		grid-column-start: 2 span;
+	}
+
+	
 `;
-
-
 
 export const StyledSearchButton = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-		
+
 	height: 45px;
 	width: 45px;
 	min-width: 45px;
@@ -49,6 +60,14 @@ export const StyledSearchButton = styled.button`
 
 	&:active {
 		box-shadow: 0px 2px 10px 2px rgb(192, 192, 192, 0.2);
-		background-color:  #978fc1;
+		background-color: #978fc1;
+	}
+
+	${media.TABLET} {
+		position: absolute;
+		right: 0;
+		height: 38px;
+		width: 38px;
+		min-width: 38px; 
 	}
 `;
