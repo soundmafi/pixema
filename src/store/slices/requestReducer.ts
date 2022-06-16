@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IRequestParams } from '../../services/types';
 
 const initialState: IRequestParams = {
-	title: 'love',
+	title: '',
 	year: '',
 	type: '',
 	page: 1,
 };
 
 const requestSlice = createSlice({
-	name: 'request ',
+	name: 'request',
 	initialState,
 	reducers: {
 		setRequest: (state, { payload }) => {
