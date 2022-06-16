@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { IRes } from '../store/slices/moviesReducer2';
 import {
-	IExtraResponseApi,
 	IMovieDetailsResponse,
 	IMoviesApiResponse,
 	IRequestParams,
@@ -26,34 +24,15 @@ class MovieServices {
 		return data;
 	}
 
-	public async getMovieInfoData(){
-		const body = {s: 'night story', y: '2015'}
-		const data = await this.api.get<IExtraResponseApi>('/', {params: body})
+
+	public async getMovieTitleSearchThunk(params: IRequestParams):Promise<IMoviesApiResponse> {
+		const body = {
+			s: params.title,
+		};
+
+		const  {data} = await this.api.get('/', { params: body });		
 		return data;
 	}
-
-	// public async getMovieInfoData(params: IRequestParams) {
-	// 	const body = {
-	// 		s: params.title,
-	// 		type: params.type,
-	// 		y: params.year,
-	// 		page: params.page,
-	// 	};
-
-	// 	const data = await this.api.get<IExtraResponseApi>('/', { params: body });
-	// 	return data;
-	// }
-
-	// public async getMovieInfoData(params:IRequestParams){
-	// 	const body = {
-	// 		s: params.title,
-	// 		type: params.type,
-	// 		y: params.year,
-	// 		page: params.page,
-	// 	};
-	// 	const {data} = await this.api.get<IMoviesApiResponse>('/', {params: body})
-	// 	return data;
-	// }
 
 	public async getMovieDetails(params: string | undefined): Promise<IMovieDetailsResponse> {
 		const request = {
@@ -63,14 +42,7 @@ class MovieServices {
 		return data;
 	}
 
-	public async getMovieTitleSearch(params: IRequestParams) {
-		const search = {
-			s: params,
-		};
-
-		const { data } = await this.api.get('/', { params: search });
-		return data;
-	}
+	
 }
 
 export const movieApi = new MovieServices();

@@ -1,43 +1,30 @@
-import { createSlice, createAsyncThunk, AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-import { Params } from 'react-router-dom';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { movieApi } from '../../services/movieApi';
-import {
-	IExtraResponseApi, IRequestParams,
-} from '../../services/types';
+import { IMoviesApiResponse, IRequestParams } from '../../services/types';
 
-import { useAppSelector } from '../hooks/hooks';
-import { getRequestSearch } from '../selectors/searchRequestSelectors';
-
-export interface IRes {
-	response: IExtraResponseApi;
+export interface IThunkResponse {
+	response: IMoviesApiResponse;
 	error: any;
 	status: string;
 }
 
-const initialState: IRes = {
+const initialState: IThunkResponse = {
 	response: {
-		data: {
-			Search: [],
-			totalResults: '',
-			Response: '',
-		},
-		status: '',
-		statusText: '',
-		headers: {},
-		config: {},
-		request: {},
+		Response: 'string',
+		Search: [],
+		totalResults: '',
 	},
 	error: null,
 	status: 'idle',
 };
 
-
-
-export const fetchMovies = createAsyncThunk<any,AnyAction>('movies-list/fetchMovies', async () => {
-	const requestCurrent = useAppSelector(getRequestSearch);
-	const newResponse = await movieApi.getMovieInfoData();
-	return newResponse
-});
+export const fetchMovies = createAsyncThunk<any, IRequestParams, {}>(
+	'movies-list/fetchMovies',
+	async (requestCurrent): Promise<IMoviesApiResponse> => {
+		const newResponse = await movieApi.getMovieTitleSearchThunk(requestCurrent);
+		return newResponse;
+	}
+);
 
 const moviesSlice2 = createSlice({
 	name: 'movies-list',
@@ -47,18 +34,15 @@ const moviesSlice2 = createSlice({
 		builder.addCase(fetchMovies.pending, (state) => {
 			state.status = 'loading';
 			state.error = null;
-			console.log('загружаю');
 		});
 		builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
 			state.status = 'success';
 			state.response = payload;
-			console.log(payload);
-			console.log('загружено');
+
 		});
 		builder.addCase(fetchMovies.rejected, (state, action) => {
 			state.status = 'error';
-			state.error = action.error;
-			console.log('ошибка');
+
 		});
 	},
 });
