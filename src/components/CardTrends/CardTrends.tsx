@@ -9,10 +9,10 @@ interface IMovie {
 const CardTrends = ({ poster, title, imdbID }: IMovie) => {
 	return (
 		<StyledCardItemMovie key={imdbID}>
-			{/* <StyledLink to={`/${imdbID}`} key={imdbID}> */}
+			<StyledLink to={`/${imdbID}`} key={imdbID}>
 				<StyledPoster src={poster} alt={title} />
 				<StyledTitle>{title}</StyledTitle>
-			{/* </StyledLink> */}
+			</StyledLink>
 		</StyledCardItemMovie>
 	);
 };
