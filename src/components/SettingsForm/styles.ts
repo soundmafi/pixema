@@ -6,9 +6,8 @@ import { typography } from '../../ui/typography';
 export const StyledForm = styled.form`
 	display: grid;
 	row-gap: 40px;
-	${media.TABLET}{
+	${media.TABLET} {
 		row-gap: 20px;
-
 	}
 `;
 
@@ -27,7 +26,7 @@ export const StyledContainer = styled.div`
 	}
 
 	padding: 40px;
-	${media.MOBILE}{
+	${media.MOBILE} {
 		padding: 20px;
 	}
 
@@ -48,6 +47,13 @@ export const StyledButtonCancel = styled.button`
 	background-color: ${Colors.BG_DARK};
 	border-radius: 10px;
 	color: ${Colors.CTX_WHITE};
+	transition: all 0.2s;
+	&:hover {
+		background-color: #535668;
+	}
+	&:active {
+		background-color: #978fc1;
+	}
 `;
 
 export const StyledButtonSave = styled(StyledButtonCancel)`
@@ -58,9 +64,11 @@ export const StyledButtonSave = styled(StyledButtonCancel)`
 	color: ${Colors.CTX_WHITE};
 
 	transition: 0.3s;
+
 	&:hover {
 		background-color: #b5a7ff;
 	}
+
 	&:active {
 		background-color: #6548ff;
 	}
@@ -74,9 +82,8 @@ export const StyledButtonsContainer = styled.div`
 	width: 50%;
 	margin-left: auto;
 
-	${media.MOBILE}{
+	${media.MOBILE} {
 		margin: 0 auto;
-
 	}
 `;
 

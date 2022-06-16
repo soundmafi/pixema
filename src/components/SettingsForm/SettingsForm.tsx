@@ -100,8 +100,6 @@ const Settings = () => {
 				</StyledContainer>
 			</StyledBlockContainer>
 
-			<StyledBlockContainer></StyledBlockContainer>
-
 			{/* <StyledBlockContainer>
 				<StyledTitle>Password</StyledTitle>
 
@@ -150,8 +148,8 @@ const Settings = () => {
 
 			<StyledBlockContainer>
 				<StyledButtonsContainer>
-					<StyledButtonCancel>Cancel</StyledButtonCancel>
-					<StyledButtonSave>Save</StyledButtonSave>
+					<StyledButtonCancel type='button'>Cancel</StyledButtonCancel>
+					<StyledButtonSave type='submit'>Save</StyledButtonSave>
 				</StyledButtonsContainer>
 			</StyledBlockContainer>
 		</StyledForm>
