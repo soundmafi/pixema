@@ -3,14 +3,11 @@ import { useForm } from 'react-hook-form';
 import { StyledLabel, StyledSearch, StyledSearchButton } from './styles';
 import { SearchIcon } from '../../assets/Icons';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { movieApi } from '../../services/movieApi';
-import { setMovies } from '../../store/slices/moviesReducer';
-import { transformMovies } from '../../services/mappers/movies';
 import { RootStore } from '../../store/store';
 import { setRequest } from '../../store/slices/requestReducer';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/routes';
-import { IMoviesApiResponse } from '../../services/types';
+import { fetchMovies } from '../../store/slices/moviesReducer2';
 
 const Search = () => {
 	const navigate = useNavigate();
@@ -32,16 +29,10 @@ const Search = () => {
 	};
 
 	useEffect(() => {
-		if (request.title !== ''){
-			
-		movieApi.getMovieTitleSearch(request).then((movies:IMoviesApiResponse) => {
-			if (movies.Response ==="True"){
-			dispatch(setMovies(transformMovies(movies)));
-			}
-		});
-	}
-	}, [newRequest]);
-	
+		if (request.title !== '') {
+			dispatch(fetchMovies(request));
+		}
+	}, [request]);
 
 	const searchButton = (e: MouseEvent<HTMLElement>) => {
 		e.preventDefault();
@@ -52,7 +43,7 @@ const Search = () => {
 
 	return (
 		<StyledLabel>
-			<StyledSearch placeholder="Search" {...register('love')} onChange={handlerSearch} />
+			<StyledSearch placeholder="Search" {...register(' ')} onChange={handlerSearch} />
 			<StyledSearchButton onClick={searchButton}>
 				<SearchIcon />
 			</StyledSearchButton>
