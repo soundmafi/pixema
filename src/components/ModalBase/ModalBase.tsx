@@ -1,4 +1,4 @@
-import { ModalText } from '../../types/modalText';
+import { ModalText } from '../../ui/modalText';
 import { StyledModal, Text } from './styles';
 
 interface IModalMessage {

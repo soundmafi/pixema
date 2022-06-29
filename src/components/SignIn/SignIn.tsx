@@ -4,10 +4,8 @@ import { routes } from '../../routes/routes';
 
 import {
 	StyledButton,
-	StyledRestorePasword,
 	StyledSignForm,
 	StyledText,
-	StyledTextSignUp,
 	StyledTitle,
 } from './styles';
 
@@ -16,7 +14,7 @@ import { IInputData } from '../../types/types';
 import Input from '../Input/Input';
 import { setUser } from '../../store/slices/userReducer';
 import { useAppDispatch } from '../../store/hooks/hooks';
-import { ModalText } from '../../types/modalText';
+import { ModalText } from '../../ui/modalText';
 import { useState } from 'react';
 import ModalBase from '../ModalBase/ModalBase';
 

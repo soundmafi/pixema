@@ -21,7 +21,7 @@ import Input from '../Input/Input';
 import { useAppDispatch } from '../../store/hooks/hooks';
 import { useState } from 'react';
 import ModalBase from '../ModalBase/ModalBase';
-import { ModalText } from '../../types/modalText';
+import { ModalText } from '../../ui/modalText';
 import styled from 'styled-components';
 
 const SignUp = () => {

@@ -30,7 +30,7 @@ const Search = () => {
 
 	useEffect(() => {
 		if (request.title !== '') {
-			dispatch(fetchMovies(request));
+			dispatch(fetchMovies(newRequest));
 		}
 	}, [request]);
 
