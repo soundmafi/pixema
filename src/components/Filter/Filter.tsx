@@ -1,13 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IRequestParams } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { filterState } from '../../store/selectors/filterSelectors';
 import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
 import { setStateFilterClose } from '../../store/slices/filterStateReducer';
 import { setRequest } from '../../store/slices/requestReducer';
 import { IFilterRequest } from '../../types/types';
-import { ButtonCloseIcon } from '../ButtonClose/ButtonCloseIcon';
 import FilterInput from '../FilterInput/FilterInput';
 import {
 	CloseIcon,
@@ -32,13 +30,13 @@ const Filter = () => {
 	const { isDisable } = useAppSelector(filterState);
 
 	// state for selected type (Movie/Series/Episode)
-	const [typeMovie, setTypeMovie] = useState<string>('Movie');
+	const [currentSearchType, setCurrentSearchType] = useState<string>('Movie');
 	const [currentSearchValue, setCurrentSearchValue] = useState<string>(request.title);
 	const [currentSearchYear, setCurrentSearchYear] = useState<string>(request.year);
 
-	const isSelected = (value: string): boolean => typeMovie === value;
+	const isSelected = (value: string): boolean => currentSearchType === value;
 	const handleTypeSort = (e: ChangeEvent<HTMLInputElement>): void => {
-		setTypeMovie(e.currentTarget.value);
+		setCurrentSearchType(e.currentTarget.value);
 	};
 
 	useEffect(() => {
@@ -46,15 +44,16 @@ const Filter = () => {
 	}, [request.title]);
 
 	// handle inputs value and write new request
-	const onSubmit: SubmitHandler<IFilterRequest> = (data, event) => {
+	const onSubmit: SubmitHandler<IFilterRequest> = () => {
 		const newRequest = {
 			title: currentSearchValue,
 			year: currentSearchYear,
-			type: typeMovie,
+			type: currentSearchType,
 			page: 1,
 		};
-		if (newRequest.title !== ''){
-		dispatch(setRequest(newRequest));
+		
+		if (newRequest.title !== '') {
+			dispatch(setRequest(newRequest));
 		}
 	};
 
@@ -112,7 +111,7 @@ const Filter = () => {
 					/>
 
 					<StyledSortingContainer>
-						<StyledLabel htmlFor="Movie" typeMovie={typeMovie}>
+						<StyledLabel htmlFor="Movie" typeMovie={currentSearchType}>
 							Movie
 						</StyledLabel>
 						<StyledInput
@@ -123,7 +122,7 @@ const Filter = () => {
 							onChange={handleTypeSort}
 							id="Movie"
 						/>
-						<StyledLabel htmlFor="Series" typeMovie={typeMovie}>
+						<StyledLabel htmlFor="Series" typeMovie={currentSearchType}>
 							Series
 						</StyledLabel>
 						<StyledInput
@@ -134,7 +133,7 @@ const Filter = () => {
 							onChange={handleTypeSort}
 							id="Series"
 						/>
-						<StyledLabel htmlFor="Episode" typeMovie={typeMovie}>
+						<StyledLabel htmlFor="Episode" typeMovie={currentSearchType}>
 							Episode
 						</StyledLabel>
 						<StyledInput
@@ -148,13 +147,10 @@ const Filter = () => {
 					</StyledSortingContainer>
 
 					<StyledButtonsContainer>
-						<StyledClearFilter type='button'
-							id="clear"
-							onClick={(e) => clearForm(e)}
-						>
+						<StyledClearFilter type="button" id="clear" onClick={(e) => clearForm(e)}>
 							Clear filter
 						</StyledClearFilter>
-						<StyledShowResult type='submit' id="show" onClick={(e) => showResutls(e)}>
+						<StyledShowResult type="submit" id="show" onClick={(e) => showResutls(e)}>
 							Show results
 						</StyledShowResult>
 					</StyledButtonsContainer>
@@ -165,37 +161,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-{
-	/* <StyledTitleParameters>Full or short movie name</StyledTitleParameters> */
-}
-{
-	/* <StyledTitleParameters>Genre</StyledTitleParameters>
-			<FilterInput inputName={'Genre'} inputType={'text'} placeholder={'Genre text'} /> */
-}
-{
-	/* <StyledTitleParameters>Country</StyledTitleParameters> */
-}
-
-// const [country, setCountry] = useState('Belarus');
-
-// const handleSelect = (option: IOption | null): void => {
-// 	if (option) {
-// 		setCountry(option.value);
-// 	}
-
-{
-	/* <FilterCountrySelect handleSelect={handleSelect} value={country} name="Country" /> */
-}
-{
-	/* <StyledTitleParameters>Year</StyledTitleParameters>
-			<StyledContainer>
-				<FilterInput inputName={'YearFrom'} inputType={'text'} placeholder={'From'} />
-				<FilterInput inputName={'YearTo'} inputType={'text'} placeholder={'To'} />
-			</StyledContainer>
-			<StyledTitleParameters>Rating</StyledTitleParameters>
-			<StyledContainer>
-				<FilterInput inputName={'RatingFrom'} inputType={'text'} placeholder={'From'} />
-				<FilterInput inputName={'RatingTo'} inputType={'text'} placeholder={'To'} />
-			</StyledContainer> */
-}

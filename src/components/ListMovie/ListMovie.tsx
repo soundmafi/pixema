@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { FilterIcon } from '../../assets/Icons';
-import { transformMovies } from '../../services/mappers/movies';
 import { IMovies } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { getMovies2Response, getMovies2Status } from '../../store/selectors/moviesSelector2';
-import { getRequestSearch } from '../../store/selectors/searchRequestSelectors';
+import { getMoviesResponse, getMoviesStatus } from '../../store/selectors/moviesSelector';
 import { setStateFilterOpen } from '../../store/slices/filterStateReducer';
-import { fetchMovies } from '../../store/slices/moviesReducer2';
 import CardItemMovie from '../CardItemMovie/CardItemMovie';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ModalNotFound from '../ModalNotFound/ModalNotFound';
@@ -16,34 +13,22 @@ import TrendsContainer from '../TrendsContainer/TrendsContainer';
 import { ListContainer, StyledFilter, StyledList } from './styles';
 
 const List = () => {
-	const request = useAppSelector(getRequestSearch);
 	const dispatch = useAppDispatch();
-	const [isResponse, setIsResponse] = useState(true);
 	const [moviesResponse, setMovieResponse] = useState<IMovies>({
-		response: null,
+		response: '',
 		results: [],
 		totalResults: 0,
 		currentPage: 1,
 		totalPages: 0,
 	});
 
-	const response = useAppSelector(getMovies2Response);
-	const statusExtra = useAppSelector(getMovies2Status);
+	const response = useAppSelector(getMoviesResponse);
+	const statusExtra = useAppSelector(getMoviesStatus);
 
 	useEffect(() => {
-		if (request.title !== '') {
-			dispatch(fetchMovies(request));
-		}
-	}, [request]);
-
-	useEffect(() => {
-		if (response.Response === 'True') {
-			setIsResponse(true);
-			setMovieResponse(transformMovies(response));
-		} else {
-			setIsResponse(false);
-		}
-	}, [response]);
+		// dispatch(fetchMovies(request));
+		setMovieResponse(response)
+	}, [response.results]);
 
 	const handleOpen = (e: React.MouseEvent<HTMLElement>): void => {
 		e.preventDefault();
@@ -52,7 +37,7 @@ const List = () => {
 
 	return (
 		<>
-			{moviesResponse.response === null ? (
+			{moviesResponse.response === '' ? (
 				<TrendsContainer />
 			) : statusExtra === 'loading' ? (
 				<LoadingSpinner />
@@ -62,10 +47,10 @@ const List = () => {
 						<FilterIcon />
 					</StyledFilter>
 					<Pagination />
-					{isResponse ? (
+					{moviesResponse.response === "True" ? (
 						<>
 							<StyledList>
-								{moviesResponse.results.map(({ title, poster, imdbID }) => {
+								{response.results.map(({ title, poster, imdbID }) => {
 									return (
 										<CardItemMovie
 											key={imdbID}

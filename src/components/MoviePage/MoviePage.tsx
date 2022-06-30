@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { transformMovieDetails } from '../../services/mappers/movieDetails';
-import { movieApi } from '../../services/movieApi';
 import { IMovieDetails } from '../../services/types';
 import MoviePoster from '../MoviePoster/MoviePoster';
-import Recommendations from '../Recommendations/Recommendations';
 import { setFavorite, unsetFavorite } from '../../store/slices/favoritesReducer';
 import { useSelector } from 'react-redux';
 import {
@@ -21,7 +19,6 @@ import {
 	StyledMovieMain,
 	StyledMoviePage,
 	StyledPlot,
-	StyledRecommendations,
 	StyledTitle,
 	StyledValue,
 } from './styles';
@@ -29,6 +26,12 @@ import { RootStore } from '../../store/store';
 import { FavoriteIcon, RatingIMDB, BackIcon } from '../../assets/Icons';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
 import { getUser } from '../../store/selectors/userSelectors';
+import {
+	getMoviesDetailsResponse,
+	getMoviesDetailsStatus,
+} from '../../store/selectors/movieDetailsSelector';
+import { fetchMovieDetails } from '../../store/slices/movieDetailReducer';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const MoviePage = () => {
 	const initialMovieDetail: IMovieDetails = {
@@ -51,21 +54,32 @@ const MoviePage = () => {
 		response: true,
 		type: '',
 	};
+
 	const { favorites } = useSelector(({ favorites }: RootStore) => favorites);
 
-	const [movieID, setMovieID] = useState<IMovieDetails>(initialMovieDetail);
 	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { isAuth } = useAppSelector(getUser);
+	const response = useAppSelector(getMoviesDetailsResponse);
+	const responseStatus = useAppSelector(getMoviesDetailsStatus);
+	const [movieID, setMovieID] = useState<IMovieDetails>(initialMovieDetail);
 
 	const handleBack = () => {
 		navigate(-1);
 	};
 
 	useEffect(() => {
-		movieApi.getMovieDetails(id).then((movie) => setMovieID(transformMovieDetails(movie)));
-	}, [id]);
+		if (id !== undefined) {
+			dispatch(fetchMovieDetails(id));
+		}
+	}, [dispatch, id]);
+
+	useEffect(() => {
+		if (response.Response === 'True') {
+			setMovieID(transformMovieDetails(response));
+		}
+	}, [response]);
 
 	const isFavorite = favorites.filter(({ imdbID }) => imdbID === movieID.imdbID).length > 0;
 
@@ -89,50 +103,56 @@ const MoviePage = () => {
 				<BackIcon />
 			</StyledButtonClose>
 
-			<StyledAsideMovie>
-				<MoviePoster poster={movieID.poster} title={movieID.title} />
-				{isAuth && (
-					<StyledButtonsContainer>
-						<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
-							<FavoriteIcon />
-						</StyledButtonFavorite>
-					</StyledButtonsContainer>
-				)}
-			</StyledAsideMovie>
-			<StyledMovieMain>
-				<StyledGenre>{movieID.genre}</StyledGenre>
-				<StyledTitle>{movieID.title}</StyledTitle>
-				<StyledBadgeContainer>
-					<ModifiedStyledBadge>{movieID.imdbRating}</ModifiedStyledBadge>
-					<StyledBadge>
-						<RatingIMDB />
-						{movieID.imdbRating}
-					</StyledBadge>
-					<StyledBadge>{movieID.runtime}</StyledBadge>
-				</StyledBadgeContainer>
+			{responseStatus === 'loading' ? (
+				<LoadingSpinner />
+			) : (
+				<>
+					<StyledAsideMovie>
+						<MoviePoster poster={movieID.poster} title={movieID.title} />
+						{isAuth && (
+							<StyledButtonsContainer>
+								<StyledButtonFavorite isFavorite={isFavorite} onClick={handleMovie}>
+									<FavoriteIcon />
+								</StyledButtonFavorite>
+							</StyledButtonsContainer>
+						)}
+					</StyledAsideMovie>
+					<StyledMovieMain>
+						<StyledGenre>{movieID.genre}</StyledGenre>
+						<StyledTitle>{movieID.title}</StyledTitle>
+						<StyledBadgeContainer>
+							<ModifiedStyledBadge>{movieID.imdbRating}</ModifiedStyledBadge>
+							<StyledBadge>
+								<RatingIMDB />
+								{movieID.imdbRating}
+							</StyledBadge>
+							<StyledBadge>{movieID.runtime}</StyledBadge>
+						</StyledBadgeContainer>
 
-				<StyledPlot>{movieID.plot}</StyledPlot>
+						<StyledPlot>{movieID.plot}</StyledPlot>
 
-				<StyledInfoContainer>
-					<StyledAttribute>Year</StyledAttribute>
-					<StyledValue>{movieID.year}</StyledValue>
-					<StyledAttribute>Released</StyledAttribute>
-					<StyledValue>{movieID.released}</StyledValue>
-					<StyledAttribute>BoxOffice</StyledAttribute>
-					<StyledValue>{movieID.boxOffice}</StyledValue>
-					<StyledAttribute>Country</StyledAttribute>
-					<StyledValue>{movieID.country}</StyledValue>
-					<StyledAttribute>Production</StyledAttribute>
-					<StyledValue>{movieID.production}</StyledValue>
-					<StyledAttribute>Actors</StyledAttribute>
-					<StyledValue>{movieID.actors}</StyledValue>
-					<StyledAttribute>Director</StyledAttribute>
-					<StyledValue>{movieID.director}</StyledValue>
-					<StyledAttribute>Writer</StyledAttribute>
-					<StyledValue>{movieID.writer}</StyledValue>
-				</StyledInfoContainer>
-			</StyledMovieMain>
-			<StyledRecommendations />
+						<StyledInfoContainer>
+							<StyledAttribute>Year</StyledAttribute>
+							<StyledValue>{movieID.year}</StyledValue>
+							<StyledAttribute>Released</StyledAttribute>
+							<StyledValue>{movieID.released}</StyledValue>
+							<StyledAttribute>BoxOffice</StyledAttribute>
+							<StyledValue>{movieID.boxOffice}</StyledValue>
+							<StyledAttribute>Country</StyledAttribute>
+							<StyledValue>{movieID.country}</StyledValue>
+							<StyledAttribute>Production</StyledAttribute>
+							<StyledValue>{movieID.production}</StyledValue>
+							<StyledAttribute>Actors</StyledAttribute>
+							<StyledValue>{movieID.actors}</StyledValue>
+							<StyledAttribute>Director</StyledAttribute>
+							<StyledValue>{movieID.director}</StyledValue>
+							<StyledAttribute>Writer</StyledAttribute>
+							<StyledValue>{movieID.writer}</StyledValue>
+						</StyledInfoContainer>
+					</StyledMovieMain>
+				</>
+			)}
+
 		</StyledMoviePage>
 	);
 };

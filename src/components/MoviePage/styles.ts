@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Colors } from '../../ui/colors';
 import { typography } from '../../ui/typography';
 import { media } from '../../ui/media';
-import Recommendations from '../Recommendations/Recommendations';
 
 export const StyledMoviePage = styled.div`
 	grid-area: outlet;
@@ -24,6 +23,8 @@ export const StyledMoviePage = styled.div`
 			'movieMain'
 			'recommendation';
 	}
+
+	width: 100%;
 `;
 
 export const StyledAsideMovie = styled.div`
@@ -70,10 +71,9 @@ export const StyledBadge = styled.p`
 	color: var(--txtColor);
 	background-color: ${Colors.BG_GRAPHITE};
 	border-radius: 6px;
-	@media (max-width:600px) {
+	@media (max-width: 600px) {
 		margin: 0 auto;
 	}
-	
 `;
 
 export const ModifiedStyledBadge = styled(StyledBadge)`
@@ -156,6 +156,11 @@ export const StyledButtonClose = styled.button`
 	}
 `;
 
-export const StyledRecommendations = styled(Recommendations)`
-	background-color: aliceblue;
+export const Container = styled.div`
+	grid-area: movieAside movieMain;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
