@@ -14,35 +14,24 @@ class MovieServices {
 	});
 
 	public async getMoviesByParams(params: IRequestParams): Promise<IMoviesApiResponse> {
-		const body = {
+		const request = {
 			s: params.title,
 			type: params.type,
 			y: params.year,
 			page: params.page,
 		};
-		const { data } = await this.api.get('/', { params: body });
+		const { data } = await this.api.get('/', { params: request });
 		return data;
 	}
 
-
-	public async getMovieTitleSearchThunk(params: IRequestParams):Promise<IMoviesApiResponse> {
-		const body = {
-			s: params.title,
-		};
-
-		const  {data} = await this.api.get('/', { params: body });		
-		return data;
-	}
 
 	public async getMovieDetails(params: string | undefined): Promise<IMovieDetailsResponse> {
 		const request = {
 			i: params,
 		};
-		const { data } = await this.api.get<any>('/', { params: request });
+		const { data } = await this.api.get('/', { params: request });
 		return data;
-	}
-
-	
+	}	
 }
 
 export const movieApi = new MovieServices();
