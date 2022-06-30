@@ -3,7 +3,7 @@ import { IMovie, IMovies, IMoviesApiResponse } from '../types';
 export const transformMovies = (response: IMoviesApiResponse): IMovies => {
 
 	return {
-		response: response.Response === 'True' ? true : false,
+		response: response.Response,
 		totalResults: Number(response.totalResults),
 		totalPages: Math.ceil(Number(response.totalResults) / 10),
 		results: response.Search.map(({ Title, imdbID, Poster, Year, Type }): IMovie => {

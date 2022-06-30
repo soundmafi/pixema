@@ -28,7 +28,7 @@ export interface IMovie {
 }
 
 export interface IMovies {
-	response: boolean | null;
+	response: string;
 	results: IMovie[];
 	totalResults: number;
 	currentPage?: number;
